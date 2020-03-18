@@ -2,12 +2,8 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const EventSchema = new Schema({
-  user: {
-    type: Schema.Types.ObjectId,
-    ref: "User"
-  },
   user_favorites: {
-    users: []
+    users: [{type: Schema.Types.ObjectId, ref: "User"}]
   },
   name: {
     type: String,
@@ -19,6 +15,10 @@ const EventSchema = new Schema({
   },
   location: {
     type: String,
+    required: true
+  },
+  date: {
+    type: Date,
     required: true
   }
 });
