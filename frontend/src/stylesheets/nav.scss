@@ -176,7 +176,7 @@
   width: 100%;
   background: #0B3C4F;
   border-top: .125rem solid #FF894F;
-  color: #f9f9fa;
+  color: #DEF0F7;
 }
 
 .mobile-tabs {
@@ -192,10 +192,10 @@
     cursor: pointer;
     padding: 0 1.25rem;
     text-transform: uppercase;
-    color: #b0aebb;
+    color: #DEF0F7;
   }
   button.active {
-    color: #f9f9fa;
+    color: #DEF0F7;
     border-bottom: .25rem solid #FF894F;
   }
 }
@@ -208,7 +208,7 @@
   background: none;
   border: none;
   cursor: pointer;
-  fill: #f9f9fa;
+  fill: #DEF0F7;
   padding: 0;
   width: 1.125rem;
   height: 1.125rem;
@@ -253,7 +253,7 @@ section {
   font-weight: 500;
   line-height: 1.4;
   text-rendering: optimizeLegibility;
-  color: #f9f9fa;
+  color: #DEF0F7;
   text-align: center;
   text-transform: uppercase;
   margin-bottom: 1.25rem;
@@ -264,7 +264,7 @@ section {
   font-family: rubik,Helvetica Neue,helvetica,sans-serif;
   font-weight: 400;
   line-height: 1.56;
-  color: #b0aebb;
+  color: #DEF0F7;
   position: relative;
   transition: all .2s ease-in-out;
   height: 3.5rem;
