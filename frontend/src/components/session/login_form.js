@@ -42,6 +42,7 @@ class LoginForm extends React.Component {
     };
 
     this.props.login(user);
+    this.props.closeModal()
   }
 
   // Render the session errors if there are any
@@ -61,7 +62,7 @@ class LoginForm extends React.Component {
     return (
       <section className="primary">
         <form className="signin" onSubmit={this.handleSubmit}>
-          <h1 class="signup-heading">Sign In</h1>
+          <h1 className="signup-heading">Sign In</h1>
           <div>
             <input type="text"
               className="input-field"
