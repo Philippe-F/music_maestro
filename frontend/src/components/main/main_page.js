@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from 'react-router-dom';
-import '../../styles/reset.css';
-import '../../styles/main.css';
+// import '../../styles/reset.css';
 
 class MainPage extends React.Component {
   render() {
