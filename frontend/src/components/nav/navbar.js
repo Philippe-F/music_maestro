@@ -11,6 +11,7 @@ class NavBar extends React.Component {
     this.logoutUser = this.logoutUser.bind(this);
     this.getLinks = this.getLinks.bind(this);
     this.openUserModal = this.openUserModal.bind(this)
+    this.formModal = this.formModal.bind(this)
   }
 
   logoutUser(e) {
@@ -71,6 +72,11 @@ class NavBar extends React.Component {
     }
   }
 
+  formModal(field) {
+    this.props.openModal(field)
+    this.openUserModal()
+  }
+
   render() {
     return (
       <div className="nav">
@@ -88,13 +94,21 @@ class NavBar extends React.Component {
             </button>
             {this.userDropdown()}
             <div className={`user-dropdown ${this.state.stateOpen}`}>
-              <div className="user-dropdown-item">
+              <div
+                className="user-dropdown-item" 
+                onClick={() => this.formModal("signup")}
+              >
                 <h3 className="user-dropdown-title">Create Account</h3>
                 <p className="user-dropdown-description">Join for free</p>
               </div>
-              <div className="user-dropdown-item">
+              <div 
+                className="user-dropdown-item" 
+                onClick={() => this.formModal("login")}
+              >
                 <h3 className="user-dropdown-title">Sign In</h3>
-                <p className="user-dropdown-description">Already joined Music Maestro? Welcome Back!</p>
+                <p className="user-dropdown-description">
+                  Already joined Music Maestro? Welcome Back!
+                </p>
               </div>
             </div>
           </div>
