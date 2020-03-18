@@ -101,10 +101,17 @@ router.post("/register", (req, res) => {
 });
 
 router.get("/events", (req, res) => {
+  // get all events 
   Event.find()
   // pass in current user location when google maps api is finished 
   .sort({ date: -1 })
   .then(events => res.json(events))
+  .catch(err => res.status(400).json(err)) 
+});
+
+router.get("/users/user_id/my_favorites", (req, res) => {
+  User.find({id: req.params.user_id}) 
+  .then(user => res.json(user.favorites))
   .catch(err => res.status(400).json(err)) 
 });
 
