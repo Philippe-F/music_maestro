@@ -41,6 +41,7 @@ class SignupForm extends React.Component {
     };
 
     this.props.signup(user, this.props.history);
+    this.props.closeModal()
   }
 
   renderErrors() {
@@ -55,11 +56,13 @@ class SignupForm extends React.Component {
 
   render() {
     return (
-      <div className="signup-form-container">
-        <form onSubmit={this.handleSubmit}>
-          <div className="signup-form">
+      <section className="primary">
+        <form className="signup" onSubmit={this.handleSubmit}>
+          <h1 class="signup-heading">Create Account</h1>
+          {/* <div className="signup-form"> */}
             <br />
             <input
+              className="input-field"
               type="text"
               value={this.state.email}
               onChange={this.update("email")}
@@ -67,6 +70,7 @@ class SignupForm extends React.Component {
             />
             <br />
             <input
+              className="input-field"
               type="text"
               value={this.state.handle}
               onChange={this.update("handle")}
@@ -74,6 +78,7 @@ class SignupForm extends React.Component {
             />
             <br />
             <input
+              className="input-field"
               type="password"
               value={this.state.password}
               onChange={this.update("password")}
@@ -81,17 +86,18 @@ class SignupForm extends React.Component {
             />
             <br />
             <input
+              className="input-field"
               type="password"
               value={this.state.password2}
               onChange={this.update("password2")}
               placeholder="Confirm Password"
             />
             <br />
-            <input type="submit" value="Submit" />
+            <input className="form-button" type="submit" value="Submit" />
             {this.renderErrors()}
-          </div>
+          {/* </div> */}
         </form>
-      </div>
+      </section>
     );
   }
 }
