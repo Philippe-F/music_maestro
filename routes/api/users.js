@@ -7,6 +7,7 @@ const User = require("../../models/User");
 const jwt = require("jsonwebtoken");
 const keys = require("../../config/keys");
 const passport = require("passport");
+const Event = require("../../models/Event")
 
 router.get('/current', passport.authenticate('jwt', {session: false}), (req, res) => {
   res.json({
@@ -97,6 +98,14 @@ router.post("/register", (req, res) => {
       });
     }
   });
+});
+
+router.get("/events", (req, res) => {
+  Event.find()
+  // pass in current user location when google maps api is finished 
+  .sort({ date: -1 })
+  .then(events => res.json(events))
+  .catch(err => res.status(400).json(err)) 
 });
 
 

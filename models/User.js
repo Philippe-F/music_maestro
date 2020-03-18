@@ -2,29 +2,12 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const UserSchema = new Schema({
-  venue: {
-  // venue association 
-    type: Schema.Types.ObjectId,
-    ref: "Venue"
-  },
-  artist: {
-  // artist association 
-    type: Schema.Types.ObjectId,
-    ref: "Artist"
-  },
-  event: {
-  // event association 
-    type: Schema.Types.ObjectId,
-    ref: "Event"
-  },
   follows: {
-  // user follows oobject 
-    venues: [],
-    artists: []
+    venues: [{type: Schema.Types.ObjectId, ref: "Venue"}],
+    artists: [{type: Schema.Types.ObjectId, ref: "Artist"}]
   },
   favorites: {
-  // user favorite object 
-    events: []
+    events: [{type: Schema.Types.ObjectId, ref: "Event"}]
   },
   handle: {
     type: String,
