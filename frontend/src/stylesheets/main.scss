@@ -1,0 +1,165 @@
+.responsive h1{
+  color: #ff894f;
+}
+
+.responsive h1 strong{
+  font-weight: bold;
+}
+
+.responsive h1{
+  font-size: 30px;
+}
+
+.responsive {
+  min-width: 00px;
+  width: 100%;
+  /* background: url("../images/concert-crowd.jpg"); */
+  background-size: 220%;
+  background-repeat: no-repeat;
+  background-color: #0b3c4F;
+  text-align: center;
+  height: 100%;
+  min-height: 100vh;
+  font-family: "Helvetica Neue", sans-serif;
+}
+
+// .splash-pg-button {
+//   background-color: #ff894f;
+//   color: #def0f7;
+//   padding: 15px 80px;
+//   font-size: 18px;
+// }
+
+.splash-pg-button:hover { 
+  cursor: pointer;
+}
+
+.splash-pg-button button {
+  background-color: #ff894f;
+  color: #def0f7;
+  padding: 15px 80px;
+  font-size: 18px;
+}
+
+.description{
+  text-align: center;
+  font-size: 14px;
+  color: #fff;
+  padding: 0 20px;
+  margin-top: 20px;
+  margin-bottom: 50px;
+}
+
+.inside {
+  height: 100%;
+  background-color: rgba(11, 60, 79, .8);
+
+}
+
+.greeting {
+  padding-top: 5.5em;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.discover-wrapper {
+  display: block;
+  height: 100%;
+  font-family: rubik,Helvetica Neue,helvetica,sans-serif;
+  font-weight: 400;
+  color: #def0f7;
+  overflow-anchor: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.discover {
+  max-width: 65.63rem;
+  overflow: hidden;
+  padding: 0 1.25rem;
+  margin: 0 auto;
+  padding-top: 5.25rem;
+}
+
+.discover-header {
+  font-size: 1.25rem;
+  font-family: markpro,Helvetica Neue,helvetica,sans-serif;
+  font-weight: 500;
+  line-height: 1.7;
+  text-rendering: optimizeLegibility;
+  text-transform: uppercase;
+  // color: #f9f9fa;
+  // color: #b0aebb;
+  display: flex;
+  align-items: center;
+}
+
+.discover-collection {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -.3125rem 3.4375rem;
+}
+
+.discover-item-wrapper {
+  box-sizing: border-box;
+  padding: .3125rem;
+  flex: 0 0 100%;
+  overflow: hidden;
+  div {
+    display: block;
+  }
+}
+
+.show-card {
+  background: #214D5F;
+  position: relative;
+  width: 100%;
+  height: 18.75rem;
+}
+
+.show-thumbnail {
+  height: 11.75rem;
+  position: relative;
+  background-color: #247B9E;
+}
+
+.show-body {
+  display: flex;
+  position: relative;
+  margin: 0 1.25rem;
+  height: 6.875rem;
+  padding: 0 0 1.25rem 7.875rem;
+  box-sizing: border-box;
+  z-index: 1;
+}
+
+.poster-image {
+  background-color: #302e42;
+  position: absolute;
+  bottom: 1.25rem;
+  left: 0;
+  box-shadow: 0 0 0.5rem rgba(0,0,0,.5);
+  width: 6.625rem;
+  height: 10rem;
+}
+
+.info {
+  padding-top: 1rem;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.description-metadata {
+  width: 100%
+}
+
+.details-metadata {
+  align-items: flex-end;
+  display: flex;
+}
