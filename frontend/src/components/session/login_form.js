@@ -41,44 +41,47 @@ class LoginForm extends React.Component {
       password: this.state.password
     };
 
-    this.props.login(user);
+    this.props.login(user)
   }
 
   // Render the session errors if there are any
-  renderErrors() {
-    return (
-      <ul>
-        {Object.keys(this.state.errors).map((error, i) => (
-          <li key={`error-${i}`}>
-            {this.state.errors[error]}
-          </li>
-        ))}
-      </ul>
-    );
-  }
+  // renderErrors() {
+  //   return (
+  //     <ul>
+  //       {Object.keys(this.state.errors).map((error, i) => (
+  //         <li key={`error-${i}`}>
+  //           {this.state.errors[error]}
+  //         </li>
+  //       ))}
+  //     </ul>
+  //   );
+  // }
 
   render() {
     return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
+      <section className="primary">
+        <form className="signin" onSubmit={this.handleSubmit}>
+          <h1 className="signup-heading">Sign In</h1>
           <div>
             <input type="text"
+              className="input-field"
               value={this.state.handle}
               onChange={this.update('email')}
               placeholder="Email"
             />
             <br />
             <input type="password"
+              className="input-field"
               value={this.state.password}
               onChange={this.update('password')}
               placeholder="Password"
             />
             <br />
-            <input type="submit" value="Submit" />
-            {this.renderErrors()}
+            <input className="form-button" type="submit" value="Submit" />
+            {/* {this.renderErrors()} */}
           </div>
         </form>
-      </div>
+      </section>
     );
   }
 }
