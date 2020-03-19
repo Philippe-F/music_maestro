@@ -7,7 +7,7 @@ import MainPage from "./main/main_page";
 import LoginFormContainer from "./session/login_form_container";
 import SignupFormContainer from "./session/signup_form_container";
 import Modal from './modal/modal'
-import "../stylesheets/main.css";
+import "../stylesheets/main.scss";
 import '../stylesheets/reset.css';
 import "../stylesheets/nav.scss";
 

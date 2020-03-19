@@ -19,9 +19,27 @@ class NavBar extends React.Component {
     this.searchClick = this.searchClick.bind(this)
   }
 
+  errors() {
+    // if (this.props.errors) {
+      const errs = this.props.errors.map((err, i) => <li key={i}>{err}</li>) 
+      return (
+        <div className="err-flash-messages error slide-in">
+          <div className="error-content">
+            <ul className="message-list">
+              {errs}
+            </ul>
+          </div>
+        </div>
+      )
+    // } else {
+    //   return null
+    // }
+  }
+
   logoutUser(e) {
     e.preventDefault();
     this.props.logout();
+    this.openUserModal();
   }
 
   getLinks() {
@@ -32,7 +50,15 @@ class NavBar extends React.Component {
             <i className="fas fa-user"></i>
           </button>
           {this.userDropdown()}
-          {/* <button onClick={this.logoutUser}>Logout</button> */}
+          <div className={`user-dropdown ${this.state.stateOpen}`}>
+            <div
+              className="user-dropdown-item"
+              onClick={this.logoutUser}
+            >
+              <h3 className="user-dropdown-title">Log Out</h3>
+              <p className="user-dropdown-description">See you again soon!</p>
+            </div>
+          </div>
         </div>
       );
     } else {
@@ -161,6 +187,7 @@ class NavBar extends React.Component {
   render() {
     return (
       <div className="nav">
+        {this.errors()}
         <div className="nav-content">
           <div className="nav-left" onClick={this.searchClick}>
             <i className="fas fa-search"></i>
