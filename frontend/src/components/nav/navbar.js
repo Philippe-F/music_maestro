@@ -19,23 +19,6 @@ class NavBar extends React.Component {
     this.searchClick = this.searchClick.bind(this)
   }
 
-  errors() {
-    // if (this.props.errors) {
-      const errs = this.props.errors.map((err, i) => <li key={i}>{err}</li>) 
-      return (
-        <div className="err-flash-messages error slide-in">
-          <div className="error-content">
-            <ul className="message-list">
-              {errs}
-            </ul>
-          </div>
-        </div>
-      )
-    // } else {
-    //   return null
-    // }
-  }
-
   logoutUser(e) {
     e.preventDefault();
     this.props.logout();
@@ -187,7 +170,6 @@ class NavBar extends React.Component {
   render() {
     return (
       <div className="nav">
-        {this.errors()}
         <div className="nav-content">
           <div className="nav-left" onClick={this.searchClick}>
             <i className="fas fa-search"></i>
