@@ -7,12 +7,15 @@ import MainPage from "./main/main_page";
 import LoginFormContainer from "./session/login_form_container";
 import SignupFormContainer from "./session/signup_form_container";
 import Modal from './modal/modal'
-import '../stylesheets/reset.css'
+import Errors from './errors'
+import "../stylesheets/main.scss";
+import '../stylesheets/reset.css';
 import "../stylesheets/nav.scss";
 
 
 const App = () => (
   <div>
+    <Errors />
     <Modal />
     <NavBarContainer />
     <Switch>

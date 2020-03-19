@@ -6,36 +6,85 @@ class NavBar extends React.Component {
     super(props);
     this.state = {
       dropdownOpen: false,
-      stateOpen: null
+      stateOpen: null,
+      searchOpen: false,
+      searchField: ""
     }
     this.logoutUser = this.logoutUser.bind(this);
     this.getLinks = this.getLinks.bind(this);
     this.openUserModal = this.openUserModal.bind(this)
     this.formModal = this.formModal.bind(this)
+    this.userHeader = this.userHeader.bind(this)
+    this.search = this.search.bind(this)
+    this.searchClick = this.searchClick.bind(this)
   }
 
   logoutUser(e) {
     e.preventDefault();
     this.props.logout();
+    this.openUserModal();
   }
 
-  // Selectively render links dependent on whether the user is logged in
   getLinks() {
     if (this.props.loggedIn) {
       return (
-        <div className="nav-content">
-          <div className="nav-content">
-            <button onClick={this.logoutUser}>Logout</button>
+        <div className="nav-right">
+          <button onClick={this.openUserModal}>
+            <i className="fas fa-user"></i>
+          </button>
+          {this.userDropdown()}
+          <div className={`user-dropdown ${this.state.stateOpen}`}>
+            <div
+              className="user-dropdown-item"
+              onClick={this.logoutUser}
+            >
+              <h3 className="user-dropdown-title">Log Out</h3>
+              <p className="user-dropdown-description">See you again soon!</p>
+            </div>
           </div>
         </div>
       );
     } else {
       return (
-        <div className="nav">
-          <div className="nav-content">
-            <i class="fas fa-search"></i>
-            <Link to={"/signup"}>Signup</Link>
-            <Link to={"/login"}>Login</Link>
+        <div className="nav-right">
+          <button onClick={this.openUserModal}>
+            <i className="fas fa-user"></i>
+          </button>
+          {this.userDropdown()}
+          <div className={`user-dropdown ${this.state.stateOpen}`}>
+            <div
+              className="user-dropdown-item"
+              onClick={() => this.formModal("signup")}
+            >
+              <h3 className="user-dropdown-title">Create Account</h3>
+              <p className="user-dropdown-description">Join for free</p>
+            </div>
+            <div
+              className="user-dropdown-item"
+              onClick={() => this.formModal("login")}
+            >
+              <h3 className="user-dropdown-title">Sign In</h3>
+              <p className="user-dropdown-description">
+                Already joined Music Maestro? Welcome Back!
+              </p>
+            </div>
+          </div>
+        </div>
+      );
+    }
+  }
+
+  updateSearch() {
+    return e => this.setState({ searchField: e.currentTarget.value });
+  }
+
+  userHeader() {
+    if (this.props.loggedIn) {
+      return (
+        <div className="header-avatar-container">
+          <div className="avatar-wrapper">{/* avatar img src here */}</div>
+          <div className="username-wrapper">
+            <h3 className="header-username">{this.props.user.handle}</h3>
           </div>
         </div>
       );
@@ -46,9 +95,10 @@ class NavBar extends React.Component {
     if (this.state.dropdownOpen) {
       return (
         <div className="dropdown-header">
-          <button onClick={this.openUserModal} className={`close-button`}>
+          <div onClick={this.openUserModal} className={`close-button`}>
             <i className="fas fa-times"></i>
-          </button>
+          </div>
+          {this.userHeader()}
         </div>
       )
     }
@@ -77,48 +127,64 @@ class NavBar extends React.Component {
     this.openUserModal()
   }
 
+  searchClick() {
+    console.log(this.state.searchOpen)
+    if (this.state.searchOpen) {
+      this.setState({ searchOpen: false })
+    } else {
+      this.setState({ searchOpen: true })
+    }
+  }
+
+  search() {
+    if (this.state.searchOpen) {
+      return (
+        <div className="search">
+          <div className="search-header-wrapper">
+            <div onClick={this.searchClick} className={`close-button-search`}>
+              <i className="fas fa-times close-icon"></i>
+            </div>
+            <div className="search-field">
+              <div className="search-content">
+                <div className="search-input-wrapper">
+                  <input 
+                    type="text" 
+                    placeholder="Search..." 
+                    className="search-input" 
+                    value={this.state.searchField}
+                    onChange={this.updateSearch()}
+                  ></input>
+                  <button className="search-button">
+                    <i className="fas fa-search search-icon"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="search-results-wrapper"></div>
+        </div>
+      );
+    }
+  }
+
   render() {
     return (
       <div className="nav">
         <div className="nav-content">
-          
-          <div className="nav-left">
+          <div className="nav-left" onClick={this.searchClick}>
             <i className="fas fa-search"></i>
           </div>
-          <div className="nav-center">
+          <Link to={"/"} className="nav-center">
             MM
-          </div>
-          <div className="nav-right"> 
-            <button onClick={this.openUserModal}>
-              <i className="fas fa-user"></i>
-            </button>
-            {this.userDropdown()}
-            <div className={`user-dropdown ${this.state.stateOpen}`}>
-              <div
-                className="user-dropdown-item" 
-                onClick={() => this.formModal("signup")}
-              >
-                <h3 className="user-dropdown-title">Create Account</h3>
-                <p className="user-dropdown-description">Join for free</p>
-              </div>
-              <div 
-                className="user-dropdown-item" 
-                onClick={() => this.formModal("login")}
-              >
-                <h3 className="user-dropdown-title">Sign In</h3>
-                <p className="user-dropdown-description">
-                  Already joined Music Maestro? Welcome Back!
-                </p>
-              </div>
-            </div>
-          </div>
+          </Link>
+          {this.getLinks()}
           <div className="nav-bottom-bar">
             &nbsp;
           </div>
         </div>
         <div className={`page-overlay ${this.state.stateOpen}`}>
-
         </div>
+        {this.search()}
       </div>
     );
   }
