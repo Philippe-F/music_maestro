@@ -41,22 +41,21 @@ class LoginForm extends React.Component {
       password: this.state.password
     };
 
-    this.props.login(user);
-    this.props.closeModal()
+    this.props.login(user)
   }
 
   // Render the session errors if there are any
-  renderErrors() {
-    return (
-      <ul>
-        {Object.keys(this.state.errors).map((error, i) => (
-          <li key={`error-${i}`}>
-            {this.state.errors[error]}
-          </li>
-        ))}
-      </ul>
-    );
-  }
+  // renderErrors() {
+  //   return (
+  //     <ul>
+  //       {Object.keys(this.state.errors).map((error, i) => (
+  //         <li key={`error-${i}`}>
+  //           {this.state.errors[error]}
+  //         </li>
+  //       ))}
+  //     </ul>
+  //   );
+  // }
 
   render() {
     return (
@@ -79,7 +78,7 @@ class LoginForm extends React.Component {
             />
             <br />
             <input className="form-button" type="submit" value="Submit" />
-            {this.renderErrors()}
+            {/* {this.renderErrors()} */}
           </div>
         </form>
       </section>

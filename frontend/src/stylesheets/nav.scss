@@ -444,18 +444,21 @@ section {
   position: fixed;
   left: 0;
   right: 0;
-  padding: 1.25rem 0;
-  transform: translateY(-100%);
-  display: none;
-}
-
-.error {
+  // transform: translateY(0%);
+  // display: none;
   background-color: #f45845;
+  // max-height: 0;
+  top: -100px;
+  transition: transform .5s ease-in ;
+  overflow: hidden;
 }
 
 .err-flash-messages.slide-in {
   display: block;
-  animation: message-slide-down .2s ease-in-out 0s 1 normal forwards running;
+  // animation: message-slide-down .2s ease-in-out 0s 1 normal forwards running;
+  transform: translateY(100px);
+  // max-height: 500px;
+  padding: 1.25rem 0;
 }
 
 .erc-flash-messages.slide-out {
@@ -472,4 +475,13 @@ section {
 
 .message-list {
   display: inline-block;
+}
+
+.message {
+  font-size: .8rem;
+  font-family: rubik,Helvetica Neue,helvetica,sans-serif;
+  font-weight: 400;
+  line-height: 1.41;
+  color: #DEF0F7;
+  margin: 0 auto;
 }
