@@ -12,7 +12,7 @@ class LoginForm extends React.Component {
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.renderErrors = this.renderErrors.bind(this);
+    // this.renderErrors = this.renderErrors.bind(this);
   }
 
   // Once the user has been authenticated, redirect to the Tweets page
@@ -42,21 +42,21 @@ class LoginForm extends React.Component {
     };
 
     this.props.login(user);
-    this.props.closeModal()
+    this.props.closeModal();
   }
 
   // Render the session errors if there are any
-  renderErrors() {
-    return (
-      <ul>
-        {Object.keys(this.state.errors).map((error, i) => (
-          <li key={`error-${i}`}>
-            {this.state.errors[error]}
-          </li>
-        ))}
-      </ul>
-    );
-  }
+  // renderErrors() {
+  //   return (
+  //     <ul>
+  //       {Object.keys(this.state.errors).map((error, i) => (
+  //         <li key={`error-${i}`}>
+  //           {this.state.errors[error]}
+  //         </li>
+  //       ))}
+  //     </ul>
+  //   );
+  // }
 
   render() {
     return (
@@ -79,7 +79,7 @@ class LoginForm extends React.Component {
             />
             <br />
             <input className="form-button" type="submit" value="Submit" />
-            {this.renderErrors()}
+            {/* {this.renderErrors()} */}
           </div>
         </form>
       </section>

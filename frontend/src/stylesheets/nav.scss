@@ -293,3 +293,220 @@ section {
   background-color: #FF894F;
   margin-top: .9375rem;
 }
+
+.header-avatar-container {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  min-width: 50%;
+}
+
+.avatar-wrapper {
+  position: relative;
+  width: 2.125rem;
+  height: 2.125rem;
+  flex: 0 0 2.125rem;
+  margin-right: .625rem;
+  border-radius: 50%;
+  background-color: #DEF0F7;
+}
+
+.username-wrapper {
+  flex: 1;
+  min-width: 50%;
+}
+
+.header-username {
+  font-size: .875rem;
+  font-family: markpro,Helvetica Neue,helvetica,sans-serif;
+  font-weight: 500;
+  line-height: 1.43;
+  text-rendering: optimizeLegibility;
+  color: #f9f9fa;
+  display: block;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.search {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  overflow-y: auto;
+  height: 100vh;
+  background-color: rgba(32,66,79,.8);
+  z-index: 1001;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+.search-header-wrapper {
+  padding: .5625rem 0 0;
+  background-color: #0B3C4F;
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  box-shadow: 0 0 0.5rem 0 rgba(11,60,79,.8);
+  z-index: 99;
+}
+
+.search-results-wrapper {
+  padding: 1.375rem 0 7.5rem;
+  position: relative;
+  box-sizing: border-box;
+  cursor: pointer;
+  flex: 1;
+}
+
+.search-field {
+  padding-bottom: 1rem;
+}
+
+.close-button-search {
+  position: absolute;
+  display: block;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 0;
+  background-color: initial;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 100;
+  margin-right: 1rem;
+}
+
+.close-icon {
+  width: 20px;
+  height: 20px;
+  color: #DEF0F7;
+  font-size: 20px;
+}
+
+.search-content {
+  max-width: 65.63rem;
+  position: relative;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+.search-button {
+  position: absolute;
+  display: block;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 0;
+  background-color: initial;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.search-input {
+  font-size: 1.25rem;
+  font-family: markpro,Helvetica Neue,helvetica,sans-serif;
+  font-weight: 500;
+  line-height: 1.11;
+  text-rendering: optimizeLegibility;
+  color: #f9f9fa;
+  background-color: initial;
+  padding: .25rem 2.5rem .25rem 0;
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  border: none;
+  border-bottom: .125rem solid #FF894F;
+  height: 3rem;
+}
+
+.search-input-wrapper {
+  position: relative;
+  max-width: 37.5rem;
+  margin-right: 5rem;
+}
+
+.search-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  display: block;
+  opacity: .5;
+  color: #DEF0F7;
+  font-size: 20px;
+}
+
+
+.err-flash-messages {
+  z-index: 2000;
+  position: fixed;
+  left: 0;
+  right: 0;
+  // transform: translateY(0%);
+  // display: none;
+  background-color: #f45845;
+  // max-height: 0;
+  top: -100px;
+  transition: transform .5s ease-in ;
+  overflow: hidden;
+}
+
+.err-flash-messages.slide-in {
+  display: block;
+  // animation: message-slide-down .2s ease-in-out 0s 1 normal forwards running;
+  transform: translateY(100px);
+  // max-height: 500px;
+  padding: 1.25rem 0;
+}
+
+.erc-flash-messages.slide-out {
+  display: block;
+  animation: message-slide-up .2s ease-in-out 0s 1 normal forwards running;
+}
+
+.error-content {
+  margin: 0 1.25rem;
+  padding-left: 0;
+  padding-right: 2.125rem;
+  position: relative;
+}
+
+.message-list {
+  display: inline-block;
+}
+
+.message {
+  font-size: .8rem;
+  font-family: rubik,Helvetica Neue,helvetica,sans-serif;
+  font-weight: 400;
+  line-height: 1.41;
+  color: #DEF0F7;
+  margin: 0 auto;
+}
+
+.result {
+  margin-left: 20px;
+  padding: 20px;
+  font-family: 'Helvetica Neue', sans-serif;
+  background-color: rgba(255, 137, 79, 0.9)
+}
+
+.result-name {
+  font-size: 1.3em;
+  color: rgba(222, 240, 247, 1);
+  font-weight: bold;
+}
+
+.result-artist, .result-venue, .result-date {
+  color: rgba(222, 240, 247, 0.8);
+}
+
+.not-found-msg {
+  text-align: center;
+  font-size: 1em;
+  color: rgba(222, 240, 247, 1);
+  font-weight: bold;
+  font-style: italic;
+}

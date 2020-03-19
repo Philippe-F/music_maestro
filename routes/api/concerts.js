@@ -18,7 +18,7 @@ router.get("/search", (req, res) => {
         if (foundConcerts.length > 0) {
           res.json(foundConcerts);
         } else {
-          res.json({ error: ['Nothing matched your search criteria']})
+          res.json([{error: "NO SEARCH RESULTS"}])
         }
       })
   });
