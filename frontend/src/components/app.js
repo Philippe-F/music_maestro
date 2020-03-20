@@ -6,11 +6,15 @@ import DiscoverContainer from './discover/discover_container'
 import MainPage from "./main/main_page";
 import LoginFormContainer from "./session/login_form_container";
 import SignupFormContainer from "./session/signup_form_container";
+import ArtistContainer from './artist/artist_container'
+import VenueContainer from './venue/venue_container'
 import Modal from './modal/modal'
 import Errors from './errors'
 import "../stylesheets/main.scss";
 import '../stylesheets/reset.css';
 import "../stylesheets/nav.scss";
+import "../stylesheets/artist.scss"
+import "../stylesheets/venue.scss"
 
 
 const App = () => (
