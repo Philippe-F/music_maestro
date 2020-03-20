@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import UserConcertItem from './user_concert_item'
+import ErrorItem from './error_item'
 
 class NavBar extends React.Component {
   constructor(props) {
@@ -107,12 +108,12 @@ class NavBar extends React.Component {
     if (this.state.dropdownOpen) {
       return this.setState({
         dropdownOpen: false,
-        stateOpen: null
+        stateOpen: null,
       });
     } else {
       return this.setState({
         dropdownOpen: true,
-        stateOpen: "state-open"
+        stateOpen: "state-open",
       });
     }
   }
@@ -176,8 +177,12 @@ class NavBar extends React.Component {
           <div className="search-results-wrapper">
            { this.props.userConcerts ? (
             <ul>
-              {this.props.userConcerts.map(result => {
-                return <UserConcertItem key={result.id} result={result} />;
+              {this.props.userConcerts.map((result, i) => {
+                return result.error ? (
+                  <ErrorItem key={i} result={result} />
+                ) : (
+                  <UserConcertItem key={result.id} result={result} />
+                ); 
               })}
             </ul> ) : null 
             }

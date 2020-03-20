@@ -1,6 +1,6 @@
 import React from "react";
 import { AuthRoute, ProtectedRoute } from "../util/route_util";
-import { Switch, Redirect } from "react-router-dom";
+import { Switch, Redirect, Route } from "react-router-dom";
 import NavBarContainer from "./nav/navbar_container";
 import DiscoverContainer from './discover/discover_container'
 import MainPage from "./main/main_page";

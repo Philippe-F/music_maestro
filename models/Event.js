@@ -2,25 +2,24 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const EventSchema = new Schema({
-  user_favorites: {
-    users: [{type: Schema.Types.ObjectId, ref: "User"}]
-  },
   name: {
     type: String,
     required: true
   },
-  artist: {
-    type: String,
-    required: true
-  },
-  location: {
-    type: String,
-    required: true
-  },
-  date: {
+  artists: [{ type: Schema.Types.ObjectId, ref: "Artist"}],
+  venue: { type: Schema.Types.ObjectId, ref: "Venue" },
+  eventDate: {
     type: Date,
     required: true
+  },
+  timestamp: {
+    type: Date,
+    default: Date.now
   }
 });
 
+EventSchema.index({ artists: "text", venue: "text", name: "text" })
 module.exports = Event = mongoose.model("Event", EventSchema); 
+
+
+

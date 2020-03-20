@@ -12,10 +12,8 @@ import entitiesReducer from "./entities_reducer";
 const RootReducer = combineReducers({
   session: session,
   errors: errorsReducer,
-
   user: usersReducer,
   ui: uiReducer,
-
   entities: entitiesReducer, 
   ui
 
