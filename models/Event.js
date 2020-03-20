@@ -7,7 +7,7 @@ const EventSchema = new Schema({
     required: true
   },
   artists: [{ type: Schema.Types.ObjectId, ref: "Artist"}],
-  venue: {type: Schema.Types.ObjectId, ref: "Venue"},
+  venue: { type: Schema.Types.ObjectId, ref: "Venue" },
   eventDate: {
     type: Date,
     required: true
@@ -18,7 +18,7 @@ const EventSchema = new Schema({
   }
 });
 
-EventSchema.index({ artist: "text", venue: "text", name: "text" })
+EventSchema.index({ artists: "text", venue: "text", name: "text" })
 module.exports = Event = mongoose.model("Event", EventSchema); 
 
 

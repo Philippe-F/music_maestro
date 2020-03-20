@@ -9,6 +9,9 @@ const VenueSchema = new Schema({
   location: {
     type: String,
     required: true
+  },
+  img: {
+    type: String
   }
 });
 
