@@ -15,7 +15,6 @@ class SignupForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.clearedErrors = false;
   }
-
   update(field) {
     return e =>
       this.setState({
