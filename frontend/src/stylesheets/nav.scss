@@ -485,3 +485,28 @@ section {
   color: #DEF0F7;
   margin: 0 auto;
 }
+
+.result {
+  margin: 0 20px;
+  padding: 20px;
+  font-family: 'Helvetica Neue', sans-serif;
+  background-color: rgba(255, 137, 79, 0.9)
+}
+
+.result-name {
+  font-size: 1.3em;
+  color: rgba(222, 240, 247, 1);
+  font-weight: bold;
+}
+
+.result-artist, .result-venue, .result-date {
+  color: rgba(222, 240, 247, 0.8);
+}
+
+.not-found-msg {
+  text-align: center;
+  font-size: 1em;
+  color: rgba(222, 240, 247, 1);
+  font-weight: bold;
+  font-style: italic;
+}
