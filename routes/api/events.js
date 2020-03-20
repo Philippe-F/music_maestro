@@ -1,22 +1,19 @@
 const express = require("express");
 const router = express.Router();
-const concerts = require('../../models/Concert')
+const events = require('../../models/Event')
 
 router.get("/search", (req, res) => {
-  // search = req.query[0];
-  //${req.query[0]} 
-  console.log(req.query);
-    concerts
+    events
       .find({
         $text: {
           $search: `${req.query.search}`
         }
       })
-      .then(foundConcerts => {
-        console.log(foundConcerts);
+      .then(foundEvents => {
+        console.log(foundEvents);
 
         if (foundConcerts.length > 0) {
-          res.json(foundConcerts);
+          res.json(foundEvents);
         } else {
           res.json([{error: "NO SEARCH RESULTS"}])
         }
