@@ -10,13 +10,13 @@ import {
 
     switch(action.type) {
       case RECEIVE_ALL_EVENTS:
-        return Object.assign({}, newState, action.events);
+        return Object.assign({}, newState, { events: action.events });
       case RECEIVE_USER_VENUES:
-        return Object.assign({}, newState, action.data);
+        return Object.assign({}, newState, { userVenues: action.data});
       case RECEIVE_USER_ARTISTS:
-        return Object.assign({}, newState, action.data);
+        return Object.assign({}, newState, { userArtsts: action.data});
       case RECEIVE_USER_FAVORITES:
-        return Object.assign({}, newState, action.data); 
+        return Object.assign({}, newState, { userFavorites: action.data}); 
       default:
         return state;
     }
