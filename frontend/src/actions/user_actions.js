@@ -25,25 +25,25 @@ export const receiveUserVenues = data => ({
 });
 
 export const fetchEvents = () => dispatch => (
-  APIUtil.getEvents()
+  APIUtil.receiveAllEvents()
     .then(events => dispatch(receiveAllEvents(events)))
     .catch(err => console.log(err))
 );
 
 export const fetchUserFavorites = userId => dispatch => (
-  APIUtil.getUserFavorites(userId)
+  APIUtil.receiveUserFavorites(userId)
     .then(events => dispatch(receiveUserFavorites(events)))
     .catch(err => console.log(err))
 );
 
 export const fetchUserArtists = userId => dispatch => (
-  APIUtil.getUserArtists(userId)
+  APIUtil.receiveUserArtists(userId)
     .then(artists => dispatch(receiveUserArtists(artists)))
     .catch(err => console.log(err))
 );
 
 export const fetchUserVenues = userId => dispatch => (
-  APIUtil.getUserVenues(userId)
+  APIUtil.receiveUserVenues(userId)
     .then(venues => dispatch(receiveUserVenues(venues)))
     .catch(err => console.log(err))
 );
