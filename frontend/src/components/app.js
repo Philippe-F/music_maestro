@@ -11,7 +11,7 @@ import Errors from './errors'
 import "../stylesheets/main.scss";
 import '../stylesheets/reset.css';
 import "../stylesheets/nav.scss";
-
+import ArtistContainer from './artist/artist_container'
 
 const App = () => (
   <div>
@@ -19,7 +19,7 @@ const App = () => (
     <Modal />
     <NavBarContainer />
     <Switch>
-      <AuthRoute exact path="/" component={MainPage} />
+      <AuthRoute exact path="/" component={ArtistContainer} />
       <AuthRoute exact path="/login" component={LoginFormContainer} />
       <AuthRoute exact path="/signup" component={SignupFormContainer} />
       <ProtectedRoute path="/discover" component={DiscoverContainer} />
