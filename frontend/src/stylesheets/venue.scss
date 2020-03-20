@@ -2,18 +2,18 @@
   flex: 1 1 0;
 }
 
-.artist-page-container {
+.venue-page-container {
   min-width: 20rem;
   position: relative;
 }
 
-.artist {
+.venue {
   margin: auto;
   padding: 0 1.25rem;
   max-width: 65.63rem;
 }
 
-.artist-metadata {
+.venue-metadata {
   padding: 3.75rem 0 1.25rem;
   display: flex;
   flex-direction: column;
@@ -21,7 +21,7 @@
   position: relative;
 }
 
-.artist-poster {
+.venue-poster {
   position: relative;
   margin-bottom: 1.25rem;
   background-color: lightblue;
@@ -31,7 +31,7 @@
   width: 100%;
 }
 
-.artist-info {
+.venue-info {
 
 }
 
@@ -45,7 +45,7 @@
   }
 }
 
-.artist-image {
+.venue-image {
   display: block;
   position: relative;
   width: 100%;
@@ -53,7 +53,7 @@
   object-fit: cover;
 }
 
-#artist-star {
+#venue-star {
   color: #0B3C4F;
   margin-right: .625rem;
   width: 1.25rem;
