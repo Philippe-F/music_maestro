@@ -104,6 +104,7 @@ router.get("/events", (req, res) => {
   // get all events 
   Event.find()
   // pass in current user location when google maps api is finished 
+  .limit(20) 
   .sort({ date: -1 })
   .then(events => res.json(events))
   .catch(err => res.status(400).json(err)) 
