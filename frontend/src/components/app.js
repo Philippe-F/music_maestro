@@ -31,7 +31,7 @@ const App = () => (
       <ProtectedRoute path="/discover" component={DiscoverContainer} />
       <ProtectedRoute path="/users/:userId/my_favorites" component={FavoriteContainer} />
       <ProtectedRoute path="/users/:userId/my_venues" component={VenueContainer} />
-      <Route path="/events" component={EventContainer} />
+      {/* <Route path="/events" component={EventContainer} /> */}
       <ProtectedRoute path="/users/:userId/my_artists" component={ArtistContainer} />
       <Redirect to="/" /> 
     </Switch>
