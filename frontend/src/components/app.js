@@ -1,13 +1,15 @@
 import React from "react";
 import { AuthRoute, ProtectedRoute } from "../util/route_util";
-import { Switch } from "react-router-dom";
+import { Switch, Redirect } from "react-router-dom";
 import NavBarContainer from "./nav/navbar_container";
 import DiscoverContainer from './discover/discover_container'
 import MainPage from "./main/main_page";
 import LoginFormContainer from "./session/login_form_container";
 import SignupFormContainer from "./session/signup_form_container";
-import ArtistContainer from './artist/artist_container'
-import VenueContainer from './venue/venue_container'
+import FavoriteContainer from "./main/favorite_container";
+import VenueContainer from "./main/venue_container";
+import ArtistContainer from "./main/artist_container";
+import EventContainer from "./main/event_container";
 import Modal from './modal/modal'
 import Errors from './errors'
 import "../stylesheets/main.scss";
@@ -27,6 +29,11 @@ const App = () => (
       <AuthRoute exact path="/login" component={LoginFormContainer} />
       <AuthRoute exact path="/signup" component={SignupFormContainer} />
       <ProtectedRoute path="/discover" component={DiscoverContainer} />
+      <ProtectedRoute path="/users/:userId/my_favorites" component={FavoriteContainer} />
+      <ProtectedRoute path="/users/:userId/my_venues" component={VenueContainer} />
+      <Route path="/events" component={EventContainer} />
+      <ProtectedRoute path="/users/:userId/my_artists" component={ArtistContainer} />
+      <Redirect to="/" /> 
     </Switch>
   </div>
 );
