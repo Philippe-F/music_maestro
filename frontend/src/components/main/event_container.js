@@ -4,7 +4,6 @@ import { fetchEvents } from "../../actions/user_actions";
 
 const mapStateToProps = state => {
   return {
-    signedIn: state.session.isSignedIn,
     errors: state.errors.session
   };
 };

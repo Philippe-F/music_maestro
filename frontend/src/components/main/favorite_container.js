@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import MainPage from "./main_page";
-import { fetchUserFavorites } from "../../actions/user_actions";
+import { fetchUserFavorites } from "../../actions/user_actions"; 
 
 const mapStateToProps = state => {
   return {
