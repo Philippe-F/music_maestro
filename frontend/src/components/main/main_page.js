@@ -25,7 +25,7 @@ class MainPage extends React.Component {
             <button>Create Account</button>
           </div>
 
-         <Map /> 
+         {/* <Map />  */}
         </div>
       </div>
     );
