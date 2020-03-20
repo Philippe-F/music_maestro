@@ -1,6 +1,11 @@
 import React from 'react';
 
 const UserConcertItem = ({ result }) => {
+
+//  let eventDate = result.eventDate.toISOString();
+
+//  console.log(eventDate);
+
   return (
     <li>
       <div className="result">
@@ -14,4 +19,4 @@ const UserConcertItem = ({ result }) => {
   );
 }
 
-export default UserConcertItem;
+export default UserConcertItem; 
