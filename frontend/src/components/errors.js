@@ -2,13 +2,13 @@ import { connect } from "react-redux"
 import React from "react"
 
 const Errors = (props) => {
-  let errs = props.errors.map(
-    (err, i) => <li className="message" key={i}>{err}</li>
-  )
-  
+  let errorMessages = props.errors
   let slide = ""
   if (props.errors.length > 0) slide = "slide-in"
-  if (props.errors.length > 2) errs = "Looks like you missed some things"
+  if (props.errors.length > 2) errorMessages = ["Looks like you missed some things"]
+  let errs = errorMessages.map(
+    (err, i) => <li className="message" key={i}>{err}</li>
+  )
   return (
     <div className={`err-flash-messages ${slide}`}>
       <div className="error-content">
