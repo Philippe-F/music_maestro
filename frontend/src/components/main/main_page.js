@@ -1,10 +1,12 @@
 import React from "react";
-import { connect } from "react-redux";
-import { openModal } from "../../actions/modal_actions";
+import { connect } from 'react-redux';
+import { openModal } from '../../actions/modal_actions';
+import Map from '../search/map';
 
 class MainPage extends React.Component {
   render() {
     return (
+
       <div className="responsive">
         <div className="inside">
           <div className="greeting">
@@ -22,6 +24,8 @@ class MainPage extends React.Component {
           >
             <button>Create Account</button>
           </div>
+
+         <Map /> 
         </div>
       </div>
     );

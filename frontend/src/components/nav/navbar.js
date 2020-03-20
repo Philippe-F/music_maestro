@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import UserConcertItem from './user_concert_item'
 
 class NavBar extends React.Component {
   constructor(props) {
@@ -8,15 +9,16 @@ class NavBar extends React.Component {
       dropdownOpen: false,
       stateOpen: null,
       searchOpen: false,
-      searchField: ""
-    }
+      search: ""
+    };
     this.logoutUser = this.logoutUser.bind(this);
     this.getLinks = this.getLinks.bind(this);
-    this.openUserModal = this.openUserModal.bind(this)
-    this.formModal = this.formModal.bind(this)
-    this.userHeader = this.userHeader.bind(this)
-    this.search = this.search.bind(this)
-    this.searchClick = this.searchClick.bind(this)
+    this.openUserModal = this.openUserModal.bind(this);
+    this.formModal = this.formModal.bind(this);
+    this.userHeader = this.userHeader.bind(this);
+    this.search = this.search.bind(this);
+    this.searchClick = this.searchClick.bind(this);
+    this.handleSearch = this.handleSearch.bind(this);
   }
 
   logoutUser(e) {
@@ -34,10 +36,7 @@ class NavBar extends React.Component {
           </button>
           {this.userDropdown()}
           <div className={`user-dropdown ${this.state.stateOpen}`}>
-            <div
-              className="user-dropdown-item"
-              onClick={this.logoutUser}
-            >
+            <div className="user-dropdown-item" onClick={this.logoutUser}>
               <h3 className="user-dropdown-title">Log Out</h3>
               <p className="user-dropdown-description">See you again soon!</p>
             </div>
@@ -75,7 +74,7 @@ class NavBar extends React.Component {
   }
 
   updateSearch() {
-    return e => this.setState({ searchField: e.currentTarget.value });
+    return e => this.setState({ search: e.currentTarget.value });
   }
 
   userHeader() {
@@ -100,43 +99,50 @@ class NavBar extends React.Component {
           </div>
           {this.userHeader()}
         </div>
-      )
+      );
     }
   }
 
   openUserModal() {
     if (this.state.dropdownOpen) {
-      return (
-        this.setState({ 
-          dropdownOpen: false,
-          stateOpen: null
-        })
-      )
+      return this.setState({
+        dropdownOpen: false,
+        stateOpen: null
+      });
     } else {
-      return (
-        this.setState({ 
-          dropdownOpen: true,
-          stateOpen: "state-open"
-        })
-      )
+      return this.setState({
+        dropdownOpen: true,
+        stateOpen: "state-open"
+      });
     }
   }
 
   formModal(field) {
-    this.props.openModal(field)
-    this.openUserModal()
+    this.props.openModal(field);
+    this.openUserModal();
   }
 
   searchClick() {
-    console.log(this.state.searchOpen)
+    console.log(this.state.searchOpen);
     if (this.state.searchOpen) {
-      this.setState({ searchOpen: false })
+      this.setState({ searchOpen: false });
     } else {
-      this.setState({ searchOpen: true })
+      this.setState({ searchOpen: true });
     }
   }
 
+  handleSearch() {
+    this.props.searchConcerts(this.state.search);
+  }
+
   search() {
+    // let array = []
+    // if(this.props.userConcerts.error){
+    //   array = this.props.userConcerts.errors
+    // } else if (this.props.userConcerts){
+    //   array = this.props.userConcerts
+    // } 
+
     if (this.state.searchOpen) {
       return (
         <div className="search">
@@ -147,21 +153,35 @@ class NavBar extends React.Component {
             <div className="search-field">
               <div className="search-content">
                 <div className="search-input-wrapper">
-                  <input 
-                    type="text" 
-                    placeholder="Search..." 
-                    className="search-input" 
-                    value={this.state.searchField}
-                    onChange={this.updateSearch()}
-                  ></input>
-                  <button className="search-button">
-                    <i className="fas fa-search search-icon"></i>
-                  </button>
+                  {/* SEARCH BAR FORM */}
+                  <form>
+                    <input
+                      type="text"
+                      placeholder="Search..."
+                      className="search-input"
+                      value={this.state.search}
+                      onChange={this.updateSearch()}
+                    ></input>
+                    <button
+                      className="search-button"
+                      onClick={this.handleSearch}
+                    >
+                      <i className="fas fa-search search-icon"></i>
+                    </button>
+                  </form>
                 </div>
               </div>
             </div>
           </div>
-          <div className="search-results-wrapper"></div>
+          <div className="search-results-wrapper">
+           { this.props.userConcerts ? (
+            <ul>
+              {this.props.userConcerts.map(result => {
+                return <UserConcertItem key={result.id} result={result} />;
+              })}
+            </ul> ) : null 
+            }
+          </div>
         </div>
       );
     }
@@ -178,12 +198,9 @@ class NavBar extends React.Component {
             MM
           </Link>
           {this.getLinks()}
-          <div className="nav-bottom-bar">
-            &nbsp;
-          </div>
+          <div className="nav-bottom-bar">&nbsp;</div>
         </div>
-        <div className={`page-overlay ${this.state.stateOpen}`}>
-        </div>
+        <div className={`page-overlay ${this.state.stateOpen}`}></div>
         {this.search()}
       </div>
     );
