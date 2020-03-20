@@ -127,13 +127,13 @@ router.get("/users/user_id/my_venues", (req, res) => {
   .catch(err => res.status(400).json(err)) 
 });
 
-router.post("/", singleMulterUpload("image"), async (req, res) => {
-  const userData = req.body;
-  userData.image = await singlePublicFileUpload(req.file);
-  const user = new User(userData);
-  await user.save();
-  res.json(user);
-});
+// router.post("/", singleMulterUpload("image"), async (req, res) => {
+//   const userData = req.body;
+//   userData.image = await singlePublicFileUpload(req.file);
+//   const user = new User(userData);
+//   await user.save();
+//   res.json(user);
+// });
 
 
 module.exports = router; 
