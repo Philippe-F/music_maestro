@@ -10,7 +10,7 @@ export default function (state = {}, action) {
 
   switch (action.type) {
     case RECEIVE_ALL_EVENTS:
-      return Object.assign({}, newState, { events: action.events });
+      return Object.assign({}, newState, action.events);
     default:
       return state;
   }
