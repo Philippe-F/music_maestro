@@ -20,6 +20,11 @@ class NavBar extends React.Component {
     this.search = this.search.bind(this);
     this.searchClick = this.searchClick.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
+    this.clearSearch = this.clearSearch.bind(this);
+  }
+
+  clearSearch() {
+    this.setState({ search: "" });
   }
 
   logoutUser(e) {
@@ -108,12 +113,12 @@ class NavBar extends React.Component {
     if (this.state.dropdownOpen) {
       return this.setState({
         dropdownOpen: false,
-        stateOpen: null,
+        stateOpen: null
       });
     } else {
       return this.setState({
         dropdownOpen: true,
-        stateOpen: "state-open",
+        stateOpen: "state-open"
       });
     }
   }
@@ -126,9 +131,12 @@ class NavBar extends React.Component {
   searchClick() {
     console.log(this.state.searchOpen);
     if (this.state.searchOpen) {
+      this.clearSearch();
       this.setState({ searchOpen: false });
     } else {
+      this.clearSearch();
       this.setState({ searchOpen: true });
+      this.props.clearSearchResults();
     }
   }
 
@@ -136,14 +144,29 @@ class NavBar extends React.Component {
     this.props.searchConcerts(this.state.search);
   }
 
-  search() {
-    // let array = []
-    // if(this.props.userConcerts.error){
-    //   array = this.props.userConcerts.errors
-    // } else if (this.props.userConcerts){
-    //   array = this.props.userConcerts
-    // } 
+  renderSearchResults() {
 
+    if (this.props.userConcerts) {
+      return(
+           this.props.userConcerts ? (
+            <ul>
+              {this.props.userConcerts.map((result, i) => {
+                return result.error ? (
+                  <ErrorItem key={i} result={result} />
+                ) : (
+                  <UserConcertItem key={result.id} result={result} />
+                );
+              })}
+            </ul> ) : null
+      )
+    } else {
+      return null
+    }
+  }
+
+
+
+  search() {
     if (this.state.searchOpen) {
       return (
         <div className="search">
@@ -155,7 +178,7 @@ class NavBar extends React.Component {
               <div className="search-content">
                 <div className="search-input-wrapper">
                   {/* SEARCH BAR FORM */}
-                  <form>
+                  <form onSubmit={this.handleSearch}>
                     <input
                       type="text"
                       placeholder="Search..."
@@ -165,7 +188,7 @@ class NavBar extends React.Component {
                     ></input>
                     <button
                       className="search-button"
-                      onClick={this.handleSearch}
+        
                     >
                       <i className="fas fa-search search-icon"></i>
                     </button>
@@ -175,17 +198,7 @@ class NavBar extends React.Component {
             </div>
           </div>
           <div className="search-results-wrapper">
-           { this.props.userConcerts ? (
-            <ul>
-              {this.props.userConcerts.map((result, i) => {
-                return result.error ? (
-                  <ErrorItem key={i} result={result} />
-                ) : (
-                  <UserConcertItem key={result.id} result={result} />
-                ); 
-              })}
-            </ul> ) : null 
-            }
+            {this.renderSearchResults()}
           </div>
         </div>
       );

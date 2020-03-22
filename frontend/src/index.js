@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
-
+import { followVenue, unfollowVenue, followArtist, unfollowArtist } from './util/follows_util';
+import { favoriteEvent, unfavoriteEvent } from './util/favorites_util';
 
 // We will create this component shortly
 import Root from "./components/root";
@@ -51,4 +52,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const root = document.getElementById("root");
 
   ReactDOM.render(<Root store={store} />, root);
+
+
+  window.followVenue = followVenue;
+  window.unfollowVenue = unfollowVenue;
+  window.followArtist = followArtist;
+  window.unfollowArtist = unfollowArtist;
+  window.favoriteEvent = favoriteEvent;
+  window.unfavoriteEvent = unfavoriteEvent;
 });
