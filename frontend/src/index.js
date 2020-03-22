@@ -1,25 +1,30 @@
 import React from "react";
 import ReactDOM from "react-dom";
+<<<<<<< Updated upstream
 import { followVenue, unfollowVenue, followArtist, unfollowArtist } from './util/follows_util';
 import { favoriteEvent, unfavoriteEvent } from './util/favorites_util';
 
 // We will create this component shortly
+=======
+>>>>>>> Stashed changes
 import Root from "./components/root";
-
-// We set this up in the last section
 import configureStore from "./store/store";
-
-// We will use this to parse the user's session token
 import jwt_decode from "jwt-decode";
-
-// The session utility we just created
 import { setAuthToken } from "./util/session_api_util";
-
-// We have not created this action yet, but will do so in the next step
 import { logout } from "./actions/session_actions";
+import {
+  fetchUserFavorites,
+  fetchUserArtists,
+  fetchUserVenues
+} from "./actions/user_actions";
+import { receiveUserArtists } from "./util/user_api_util"
+import axios from 'axios'
+
+
 
 document.addEventListener("DOMContentLoaded", () => {
   let store;
+  
 
   // If a returning user has a session token stored in localStorage
   if (localStorage.jwtToken) {
@@ -50,6 +55,15 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   // Render our root component and pass in the store as a prop
   const root = document.getElementById("root");
+
+  window.store = store
+  window.dispatch = store.dispatch
+  window.getState = store.getState
+  window.fetchUserFavorites = fetchUserFavorites;
+  window.fetchUserArtists = fetchUserArtists;
+  window.fetchUserVenues = fetchUserVenues;
+  window.receiveUserArtists = receiveUserArtists;
+  window.axios = axios
 
   ReactDOM.render(<Root store={store} />, root);
 

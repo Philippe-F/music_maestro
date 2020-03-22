@@ -104,11 +104,14 @@ router.post("/register", (req, res) => {
 router.get("/events", (req, res) => {
   // get all events 
   Event.find()
-  // pass in current user location when google maps api is finished 
-  .limit(20) 
-  .sort({ date: -1 })
-  .then(events => res.json(events))
-  .catch(err => res.status(400).json(err)) 
+    // populate the associations
+    .populate("venue")
+    .populate("artists")
+    // pass in current user location when google maps api is finished
+    .limit(20)
+    .sort({ date: -1 })
+    .then(events => res.json(events))
+    .catch(err => res.status(400).json(err)); 
 });
 
 ////////////////FETCHING DATA////////////////
@@ -204,5 +207,10 @@ router.delete("/:user_id/events/:event_id/favorite", async (req, res) => {
 });
 
 
+  // res.send(user)
+
+  // res.send("hello")
+
+// })
 
 module.exports = router; 
