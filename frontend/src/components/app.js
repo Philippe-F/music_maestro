@@ -8,7 +8,7 @@ import LoginFormContainer from "./session/login_form_container";
 import SignupFormContainer from "./session/signup_form_container";
 import FavoriteContainer from "./main/favorite_container";
 import VenueContainer from "./main/venue_container";
-import ArtistContainer from "./main/artist_container";
+import ArtistContainer from "./artist/artist_container";
 import EventContainer from "./main/event_container";
 import Modal from './modal/modal'
 import Errors from './errors'
@@ -33,6 +33,8 @@ const App = () => (
       <ProtectedRoute path="/my_venues" component={VenueContainer} />
       <Route path="/events" component={EventContainer} />
       <ProtectedRoute path="/my_artists" component={ArtistContainer} />
+      <ProtectedRoute path="/my_artists/:artist_id" component={ArtistContainer} />
+      {/* <Route path="/artists" component={ArtistContainer} /> */}
       <Redirect to="/" /> 
     </Switch>
   </div>
