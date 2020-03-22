@@ -61,10 +61,10 @@ document.addEventListener("DOMContentLoaded", () => {
   ReactDOM.render(<Root store={store} />, root);
 
 
-  window.followVenue = followVenue;
-  window.unfollowVenue = unfollowVenue;
-  window.followArtist = followArtist;
-  window.unfollowArtist = unfollowArtist;
-  window.favoriteEvent = favoriteEvent;
-  window.unfavoriteEvent = unfavoriteEvent;
+  // window.followVenue = followVenue;
+  // window.unfollowVenue = unfollowVenue;
+  // window.followArtist = followArtist;
+  // window.unfollowArtist = unfollowArtist;
+  // window.favoriteEvent = favoriteEvent;
+  // window.unfavoriteEvent = unfavoriteEvent;
 });
