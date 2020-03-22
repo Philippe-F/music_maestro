@@ -1,6 +1,9 @@
 import React from 'react'
 import DiscoverItem from '../discover/discover_item'
 class Artist extends React.Component {
+  constructor(props) {
+    super(props)
+  };
 
   render() {
     return (
@@ -40,4 +43,4 @@ class Artist extends React.Component {
   }
 }
 
-export default Artist
+export default Artist;

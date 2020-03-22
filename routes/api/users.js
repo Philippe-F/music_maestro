@@ -125,10 +125,17 @@ router.get("/:user_id/my_favorites", async (req, res) => {
   res.json(user.favorites.events);
 });
 
-router.get("/:user_id/my_artists", async (req, res) => {
+// router.get("/:user_id/my_artists", async (req, res) => {
+//   const user = await User.findById(req.params.user_id)
+//     .populate("follows.artists");
+//   res.json(user.follows.artists);
+// });
+
+router.get("/:user_id/my_artists/:artist_id", async (req, res) => {
   const user = await User.findById(req.params.user_id)
     .populate("follows.artists");
-  res.json(user.follows.artists);
+  const selected = user.follows.artists.find(ele => ele.id === req.params.artist_id);
+  res.json(selected)
 });
 
 router.get("/:user_id/my_venues", async (req, res) => {
