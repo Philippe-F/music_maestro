@@ -4,6 +4,8 @@ const validateRegisterInput = require("../../validation/register");
 const validateLoginInput = require("../../validation/login");
 const bcrypt = require("bcryptjs");
 const User = require("../../models/User");
+const Venue = require("../../models/Venue");
+const Artist = require("../../models/Artist");
 const jwt = require("jsonwebtoken");
 const keys = require("../../config/keys");
 const passport = require("passport");
@@ -109,31 +111,98 @@ router.get("/events", (req, res) => {
   .catch(err => res.status(400).json(err)) 
 });
 
-router.get("/users/user_id/my_favorites", (req, res) => {
-  User.find({id: req.params.user_id}) 
-  .then(user => res.json(user.favorites.events))
-  .catch(err => res.status(400).json(err)) 
+////////////////FETCHING DATA////////////////
+
+router.get("/:user_id/my_favorites", async (req, res) => {
+  // User.findById( req.params.user_id )
+  // .populate("event")
+  // .then(user => res.json(user.favorites.events))
+  // .catch(err => res.status(400).json(err)) 
+
+  const user = await User.findById(req.params.user_id)
+    .populate("favorites.events");
+  res.json(user.favorites.events);
 });
 
-router.get("/users/user_id/my_artists", (req, res) => {
-  User.find({id: req.params.user_id}) 
-  .then(user => res.json(user.follows.artists))
-  .catch(err => res.status(400).json(err)) 
+router.get("/:user_id/my_artists", async (req, res) => {
+  const user = await User.findById(req.params.user_id)
+    .populate("follows.artists");
+  res.json(user.follows.artists);
 });
 
-router.get("/users/user_id/my_venues", (req, res) => {
-  User.find({id: req.params.user_id}) 
-  .then(user => res.json(user.follows.venues))
-  .catch(err => res.status(400).json(err)) 
+router.get("/:user_id/my_venues", async (req, res) => {
+  const user = await User.findById(req.params.user_id)
+    .populate("follows.venues");
+  res.json(user.follows.venues);
 });
 
-// router.post("/", singleMulterUpload("image"), async (req, res) => {
-//   const userData = req.body;
-//   userData.image = await singlePublicFileUpload(req.file);
-//   const user = new User(userData);
-//   await user.save();
-//   res.json(user);
-// });
+///////////////FOLLOWS////////////////
+
+router.post("/:user_id/artists/:artist_id/follow", async(req, res) => {
+  const artist = await Artist.findById(req.params.artist_id);
+  let user = await User.findById(req.params.user_id);
+    user.follows.artists.push(artist._id);
+    user = await user.save();
+    res.json(user);
+});
+
+router.delete("/:user_id/artists/:artist_id/follow", async(req,res) => {
+  let user = await User.findById(req.params.user_id);
+  const index = user.follows.artists.indexOf(req.params.artist_id);
+  delete user.follows.artists[index];
+  user = await user.save();
+  res.json(user);
+})
+
+
+router.post("/:user_id/venues/:venue_id/follow", async(req, res) => {
+
+  const venue = await Venue.findById(req.params.venue_id);
+  let user = await User.findById(req.params.user_id);
+    user.follows.venues.push(venue._id);
+    user = await user.save()
+    res.json(user)
+
+    // User.findOne({ _id: req.params.user_id })
+    //   .then(user => {
+    //     user.follows.venues.push(req.params.venue_id)
+    //     return user.save()
+    //       .then(user => res.json(user))
+    //   })
+});
+
+
+
+router.delete("/:user_id/venues/:venue_id/follow", async(req, res) => {
+  const venue = await Venue.findById(req.params.venue_id);
+  let user = await User.findById(req.params.user_id);
+  // db.users.update({ _id: user._id }, { $pull: { follows: { venue._id } } });
+  user = await user.save();
+  res.json(user);
+});
+
+
+
+///////////////FAVORITES//////////////
+
+
+router.post("/:user_id/events/:event_id/favorite", async(req, res) => {
+  const event = await Event.findById(req.params.event_id);
+  let user = await User.findById(req.params.user_id);
+    user.favorites.events.push(event._id);
+    user = await user.save()
+    res.json(user)
+});
+
+router.delete("/:user_id/events/:event_id/favorite", async (req, res) => {
+  const event = await Event.findById(req.params.event_id);
+  let user = await User.findById(req.params.user_id);
+  const index = user.favorites.events.indexOf(event._id);
+  delete user.favorites.events[index];
+  user = await user.save();
+  res.json(user);
+});
+
 
 
 module.exports = router; 
