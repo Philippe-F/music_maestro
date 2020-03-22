@@ -139,6 +139,11 @@ router.get("/:user_id/my_venues", async (req, res) => {
   res.json(user.follows.venues);
 });
 
+router.get("/:user_id/events", async (req, res) => {
+  const user = await User.findById(req.params.user_id)
+  res.json(user.favorites.events)
+})
+
 ///////////////FOLLOWS////////////////
 
 router.post("/:user_id/artists/:artist_id/follow", async(req, res) => {
