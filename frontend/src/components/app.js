@@ -29,10 +29,10 @@ const App = () => (
       <AuthRoute exact path="/login" component={LoginFormContainer} />
       <AuthRoute exact path="/signup" component={SignupFormContainer} />
       <ProtectedRoute path="/discover" component={DiscoverContainer} />
-      <ProtectedRoute path="/users/:userId/my_favorites" component={FavoriteContainer} />
-      <ProtectedRoute path="/users/:userId/my_venues" component={VenueContainer} />
+      <ProtectedRoute path="/my_favorites" component={FavoriteContainer} />
+      <ProtectedRoute path="/my_venues" component={VenueContainer} />
       <Route path="/events" component={EventContainer} />
-      <ProtectedRoute path="/users/:userId/my_artists" component={ArtistContainer} />
+      <ProtectedRoute path="/my_artists" component={ArtistContainer} />
       <Redirect to="/" /> 
     </Switch>
   </div>
