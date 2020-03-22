@@ -22,8 +22,11 @@ app.get("/potato", (req, res) => {
 
 app.use("/api/users", users);
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 app.use("/", search);
 =======
+=======
+>>>>>>> Stashed changes
 app.get("/events", users);
 app.get("/search", search);
 >>>>>>> Stashed changes
