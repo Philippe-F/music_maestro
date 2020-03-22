@@ -1,12 +1,5 @@
 import React from "react";
 import ReactDOM from "react-dom";
-<<<<<<< Updated upstream
-import { followVenue, unfollowVenue, followArtist, unfollowArtist } from './util/follows_util';
-import { favoriteEvent, unfavoriteEvent } from './util/favorites_util';
-
-// We will create this component shortly
-=======
->>>>>>> Stashed changes
 import Root from "./components/root";
 import configureStore from "./store/store";
 import jwt_decode from "jwt-decode";
