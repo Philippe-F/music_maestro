@@ -11,6 +11,10 @@ export default class Discover extends React.Component{
     this.props.fetchEvents()
   }
 
+  aggregateEvents() {
+    
+  }
+
   allEvents() {
     let events = null
     if (this.props.events) {
@@ -22,6 +26,10 @@ export default class Discover extends React.Component{
     }
 
     return events
+  }
+
+  userEvents() {
+    let events = null
   }
 
   render() {
