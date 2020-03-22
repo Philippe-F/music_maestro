@@ -5,12 +5,6 @@ import configureStore from "./store/store";
 import jwt_decode from "jwt-decode";
 import { setAuthToken } from "./util/session_api_util";
 import { logout } from "./actions/session_actions";
-import {
-  fetchUserFavorites,
-  fetchUserArtists,
-  fetchUserVenues
-} from "./actions/user_actions";
-import { receiveUserArtists } from "./util/user_api_util"
 import axios from 'axios'
 
 
@@ -52,10 +46,6 @@ document.addEventListener("DOMContentLoaded", () => {
   window.store = store
   window.dispatch = store.dispatch
   window.getState = store.getState
-  window.fetchUserFavorites = fetchUserFavorites;
-  window.fetchUserArtists = fetchUserArtists;
-  window.fetchUserVenues = fetchUserVenues;
-  window.receiveUserArtists = receiveUserArtists;
   window.axios = axios
 
   ReactDOM.render(<Root store={store} />, root);

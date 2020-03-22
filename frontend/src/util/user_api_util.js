@@ -15,3 +15,7 @@ export const receiveUserArtists = userId => {
 export const receiveUserVenues = userId => {
   return axios.get(`/api/users/${userId}/my_venues`);
 };
+
+export const receiveUserEvents = userId => (
+  axios.get(`api/users/${userId}/events`)
+)
