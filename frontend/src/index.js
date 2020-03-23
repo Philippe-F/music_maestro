@@ -1,25 +1,17 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { followVenue, unfollowVenue, followArtist, unfollowArtist } from './util/follows_util';
-import { favoriteEvent, unfavoriteEvent } from './util/favorites_util';
-
-// We will create this component shortly
 import Root from "./components/root";
-
-// We set this up in the last section
 import configureStore from "./store/store";
-
-// We will use this to parse the user's session token
 import jwt_decode from "jwt-decode";
-
-// The session utility we just created
 import { setAuthToken } from "./util/session_api_util";
-
-// We have not created this action yet, but will do so in the next step
 import { logout } from "./actions/session_actions";
+import axios from 'axios'
+
+
 
 document.addEventListener("DOMContentLoaded", () => {
   let store;
+  
 
   // If a returning user has a session token stored in localStorage
   if (localStorage.jwtToken) {
@@ -51,8 +43,12 @@ document.addEventListener("DOMContentLoaded", () => {
   // Render our root component and pass in the store as a prop
   const root = document.getElementById("root");
 
-  ReactDOM.render(<Root store={store} />, root);
+  window.store = store
+  window.dispatch = store.dispatch
+  window.getState = store.getState
+  window.axios = axios
 
+<<<<<<< HEAD
 
   window.followVenue = followVenue;
   window.unfollowVenue = unfollowVenue;
@@ -61,4 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
   window.favoriteEvent = favoriteEvent;
   window.unfavoriteEvent = unfavoriteEvent;
   window.store = store;
+=======
+  ReactDOM.render(<Root store={store} />, root);
+>>>>>>> d68c445ff52116fda77063615c0c98fad750e14f
 });
