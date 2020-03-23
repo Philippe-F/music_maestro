@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import Event from './event_show'
-import {fetchEvents, fetchUserEvents} from '../../actions/user_actions'
+import {fetchEvents, fetchUserFavorites} from '../../actions/user_actions'
 import { favoriteEvent, unfavoriteEvent } from '../../actions/fav_and_follow_actions'
 
 const mSTP = (state, ownProps) => {
@@ -13,7 +13,7 @@ const mSTP = (state, ownProps) => {
   return {
     event: eventProp,
     currentUser: state.session.user,
-    userEvents: state.user.userEvents
+    favorites: state.user.userFavorites
   }
 }
 
@@ -21,7 +21,7 @@ const mDTP = dispatch => ({
   fetchEvents: () => dispatch(fetchEvents()),
   favoriteEvent: (userId, eventId) => dispatch(favoriteEvent(userId, eventId)),
   unfavoriteEvent: (userId, eventId) => dispatch(unfavoriteEvent(userId, eventId)),
-  fetchUserEvents: (userId) => dispatch(fetchUserEvents(userId)),
+  fetchUserFavorites: (userId) => dispatch(fetchUserFavorites(userId)),
 })
 
 export default connect(mSTP, mDTP)(Event)

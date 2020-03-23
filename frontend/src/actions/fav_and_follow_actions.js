@@ -2,11 +2,17 @@ import * as FollowAPIUtil from '../util/follows_util';
 import * as FavAPIUtil from "../util/favorites_util";
 
 export const RECEIVE_USER = "RECEIVE_USER"
+export const UPDATE_USER_FAVORITES = "UPDATE_USER_FAVORITES"
 
 const receiveUser = user => ({
   type: RECEIVE_USER,
   user
 });
+
+const updateUserFavorites = data => ({
+  type: UPDATE_USER_FAVORITES,
+  data
+})
 
 
 
