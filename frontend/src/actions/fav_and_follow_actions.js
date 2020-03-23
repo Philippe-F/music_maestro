@@ -31,9 +31,9 @@ export const unfollowArtist = (userId, artistId) => dispatch => FollowAPIUtil.un
 ////////////////////////
 
 export const favoriteEvent = (userId, eventId) => dispatch => FavAPIUtil.favoriteEvent(userId, eventId)
-  .then((user => dispatch(receiveUser(user))));
+  .then((user => dispatch(updateUserFavorites(user))));
 
  export const unfavoriteEvent = (userId, eventId) => dispatch => FavAPIUtil.unfavoriteEvent(userId, eventId)
-  .then((user => dispatch(receiveUser(user))));
+  .then((user => dispatch(updateUserFavorites(user))));
 
 
