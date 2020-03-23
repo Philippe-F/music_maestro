@@ -12,7 +12,10 @@ class DiscoverItem extends React.Component {
       <div className="discover-item-wrapper">
         <div className="">
           <div className="show-card">
-            <Link to={`/events/${this.props.event._id}`} className="show-thumbnail">
+            <Link
+              to={`/events/${this.props.event._id}`}
+              className="show-thumbnail"
+            >
               <div
                 className="venue-thumb-height"
                 style={{ backgroundImage: `url(${venue.img})` }}
@@ -33,6 +36,7 @@ class DiscoverItem extends React.Component {
                 <div className="description-metadata">
                   <h1>{venue.name}</h1>
                 </div>
+                <div className="details-metadata">{name}</div>
                 <div className="details-metadata">{date}</div>
               </Link>
             </div>
