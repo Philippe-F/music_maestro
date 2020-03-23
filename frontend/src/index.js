@@ -52,16 +52,5 @@ document.addEventListener("DOMContentLoaded", () => {
   window.favoriteEvent = favoriteEvent
   window.unfavoriteEvent = unfavoriteEvent
 
-<<<<<<< HEAD
-
-  window.followVenue = followVenue;
-  window.unfollowVenue = unfollowVenue;
-  window.followArtist = followArtist;
-  window.unfollowArtist = unfollowArtist;
-  window.favoriteEvent = favoriteEvent;
-  window.unfavoriteEvent = unfavoriteEvent;
-  window.store = store;
-=======
   ReactDOM.render(<Root store={store} />, root);
->>>>>>> d68c445ff52116fda77063615c0c98fad750e14f
 });
