@@ -144,7 +144,7 @@
   left: 0;
   box-shadow: 0 0 0.5rem rgba(0,0,0,.5);
   width: 6.625rem;
-  height: 10rem;
+  height: 8rem;
 }
 
 .info {
@@ -153,13 +153,66 @@
   flex: 1;
   flex-direction: column;
   justify-content: space-between;
+  height: 100%;
 }
 
 .description-metadata {
-  width: 100%
+  width: 100%;
+  h1 {
+  font-size: 1.25rem;
+  font-family: rubik,Helvetica Neue,helvetica,sans-serif;
+  font-weight: 4, 00;
+  line-height: 1.5;
+  color: #def0f7;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
+  }
 }
 
 .details-metadata {
   align-items: flex-end;
   display: flex;
+  margin-top: .6rem;
+
+}
+
+.venue-thumb-height {
+  min-height: 11.75rem;
+  // max-height: 11.75rem;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+} 
+
+.artist-thumb-height {
+  min-height: 8rem;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.event-artist {
+  font-family: markpro,Helvetica Neue,helvetica,sans-serif;
+  font-size: 2.5rem;
+  color: #E87D48;
+  font-weight: 600;
+  text-shadow: -1px 0 #def0f7, 0 1px #def0f7, 1px 0 #def0f7, 0 -1px #def0f7;
+}
+
+.event-venue {
+  font-size: 1.5rem;
+  text-shadow: -1px 0 #51585A, 0 1px #51585A, 1px 0 #51585A, 0 -1px #51585A;
+  color: #CADBE1;
+}
+
+.event-thumb-height {
+  min-height: 20rem;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-width: 8rem;
 }
