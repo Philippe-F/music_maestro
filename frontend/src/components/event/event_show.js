@@ -7,11 +7,25 @@ class Event extends React.Component {
 
   componentDidMount() {
     this.props.fetchEvents()
+    this.props.fetchUserFavorites(this.props.currentUser.id)
+  }
+
+  componentDidUpdate() {
   }
 
   handleFavorite() {
-    const userId = this.props.currentUser._id
+    const userId = this.props.currentUser.id
     const eventId = this.props.event._id
+    const favIds = this.props.favorites.map((fav) => {
+      return fav._id
+    })
+    // console.log(favIds, eventId)
+    if (favIds.includes(eventId)) {
+      this.props.unfavoriteEvent(userId, eventId)
+    } else {
+      this.props.favoriteEvent(userId, eventId)
+    }
+    // console.log(userId)
   }
 
   render() {

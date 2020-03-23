@@ -5,8 +5,9 @@ import configureStore from "./store/store";
 import jwt_decode from "jwt-decode";
 import { setAuthToken } from "./util/session_api_util";
 import { logout } from "./actions/session_actions";
+import { fetchUserFavorites } from './actions/user_actions'
 import axios from 'axios'
-
+import { favoriteEvent, unfavoriteEvent } from './util/favorites_util'
 
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -47,6 +48,9 @@ document.addEventListener("DOMContentLoaded", () => {
   window.dispatch = store.dispatch
   window.getState = store.getState
   window.axios = axios
+  window.fetchUserFavorites = fetchUserFavorites
+  window.favoriteEvent = favoriteEvent
+  window.unfavoriteEvent = unfavoriteEvent
 
   ReactDOM.render(<Root store={store} />, root);
 });

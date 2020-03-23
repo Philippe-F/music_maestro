@@ -5,7 +5,7 @@ export const receiveAllEvents = () => {
 };
 
 export const receiveUserFavorites = userId => {
-  return axios.get(`/users/${userId}/my_favorites`);
+  return axios.get(`/api/users/${userId}/my_favorites`);
 };
 
 export const receiveUserArtists = userId => {
