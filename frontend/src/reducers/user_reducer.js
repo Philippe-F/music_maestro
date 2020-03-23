@@ -21,7 +21,7 @@ import { RECEIVE_USER, UPDATE_USER_FAVORITES } from '../actions/fav_and_follow_a
       case RECEIVE_USER_VENUES:
         return Object.assign({}, newState, { userVenues: action.data});
       case RECEIVE_USER_ARTISTS:
-        return Object.assign({}, newState, { userArtsts: action.data});
+        return Object.assign({}, newState, { userArtists: action.data});
       case RECEIVE_USER_ARTIST:
         return Object.assign({}, newState, { userArtists: action.data});
       case RECEIVE_USER_FAVORITES:
