@@ -60,4 +60,5 @@ document.addEventListener("DOMContentLoaded", () => {
   window.unfollowArtist = unfollowArtist;
   window.favoriteEvent = favoriteEvent;
   window.unfavoriteEvent = unfavoriteEvent;
+  window.store = store;
 });
