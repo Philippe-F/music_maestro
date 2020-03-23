@@ -209,13 +209,18 @@ router.post("/:user_id/events/:event_id/favorite", async(req, res) => {
 });
 
 router.delete("/:user_id/events/:event_id/favorite", async (req, res) => {
-  const event = await Event.findById(req.params.event_id);
   let user = await User.findById(req.params.user_id);
-  const index = user.favorites.events.indexOf(event._id);
-  delete user.favorites.events[index];
+  user.favorites.events.remove(req.params.event_id);
   user = await user.save();
   res.json(user);
 });
+
+// router.delete("/:user_id/artists/:artist_id/follow", async (req, res) => {
+//   let user = await User.findById(req.params.user_id);
+//   user.follows.artists.remove(req.params.artist_id);
+//   user = await user.save();
+//   res.json(user);
+// })
 
 
   // res.send(user)

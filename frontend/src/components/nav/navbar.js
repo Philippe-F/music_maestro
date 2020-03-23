@@ -129,7 +129,7 @@ class NavBar extends React.Component {
   }
 
   searchClick() {
-    console.log(this.state.searchOpen);
+    // console.log(this.state.searchOpen);
     if (this.state.searchOpen) {
       this.clearSearch();
       this.setState({ searchOpen: false });

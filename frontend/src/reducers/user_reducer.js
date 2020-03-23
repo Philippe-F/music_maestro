@@ -40,7 +40,7 @@ import { RECEIVE_USER, UPDATE_USER_FAVORITES } from '../actions/fav_and_follow_a
         //   newState[userFavorites].push(action.data)
         //   return newState
         // } else {
-          return Object.assign({}, newState, { userFavorites: action.data })
+          return Object.assign({}, newState, { userFavorites: action.data.data.favorites.events })
         // }
       default:
         return state;
