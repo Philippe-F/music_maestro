@@ -2,6 +2,7 @@ import * as APIUtil from "../util/user_api_util";
 export const RECEIVE_ALL_EVENTS = "RECEIVE_ALL_EVENTS";
 export const RECEIVE_USER_FAVORITES = "RECEIVE_USER_FAVORITES";
 export const RECEIVE_USER_ARTISTS = "RECEIVE_USER_ARTISTS";
+export const RECEIVE_USER_ARTIST = "RECEIVE_USER_ARTIST";
 export const RECEIVE_USER_VENUES = "RECEIVE_USER_VENUES";
 
 export const receiveAllEvents = events => ({
@@ -16,6 +17,11 @@ export const receiveUserFavorites = data => ({
 
 export const receiveUserArtists = data => ({
   type: RECEIVE_USER_ARTISTS,
+  data: data
+});
+
+export const receiveUserArtist = data => ({
+  type: RECEIVE_USER_ARTIST,
   data: data
 });
 
@@ -39,6 +45,12 @@ export const fetchUserFavorites = userId => dispatch => (
 export const fetchUserArtists = userId => dispatch => (
   APIUtil.receiveUserArtists(userId)
     .then(artists => dispatch(receiveUserArtists(artists)))
+    .catch(err => console.log(err))
+);
+
+export const fetchUserArtist = (userId, artistId) => dispatch => (
+  APIUtil.showUserArtist(userId, artistId)
+    .then(artist => dispatch(receiveUserArtists(artist)))
     .catch(err => console.log(err))
 );
 
