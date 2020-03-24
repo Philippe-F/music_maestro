@@ -5,7 +5,7 @@ import configureStore from "./store/store";
 import jwt_decode from "jwt-decode";
 import { setAuthToken } from "./util/session_api_util";
 import { logout } from "./actions/session_actions";
-import { fetchUserFavorites } from './actions/user_actions'
+import { fetchUserFavorites, fetchUserArtists } from './actions/user_actions'
 import axios from 'axios'
 import { favoriteEvent, unfavoriteEvent } from './util/favorites_util'
 
@@ -51,17 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
   window.fetchUserFavorites = fetchUserFavorites
   window.favoriteEvent = favoriteEvent
   window.unfavoriteEvent = unfavoriteEvent
+  window.fetchUserArtists = fetchUserArtists
 
-<<<<<<< HEAD
-
-  window.followVenue = followVenue;
-  window.unfollowVenue = unfollowVenue;
-  window.followArtist = followArtist;
-  window.unfollowArtist = unfollowArtist;
-  window.favoriteEvent = favoriteEvent;
-  window.unfavoriteEvent = unfavoriteEvent;
-  window.store = store;
-=======
   ReactDOM.render(<Root store={store} />, root);
->>>>>>> d68c445ff52116fda77063615c0c98fad750e14f
 });
