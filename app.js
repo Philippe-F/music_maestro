@@ -17,7 +17,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.use("/api/users", users);
-app.get("/search", search);
+app.use("/", search);
 
 app.use(passport.initialize());
 require("./config/passport")(passport);
