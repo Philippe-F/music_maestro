@@ -84,6 +84,7 @@
   height: calc(100% - 4.5rem);
   box-sizing: border-box;
   box-shadow: 0 0 0.5rem 0 rgba(0,0,0,.5);
+  // justify-content: space-between;
 }
 
 .dropdown-header {
@@ -453,4 +454,24 @@ section {
 
 .result-artist, .result-venue, .result-date {
   color: rgba(222, 240, 247, 0.8);
+}
+
+.favorites-header {
+  font-family: 'Helvetica Neue', sans-serif;
+  justify-content: center;
+  color: #FF894F;
+  margin: 3rem 0 1rem 1.2rem;
+  font-weight: 700;
+  font-size: 24px;
+}
+
+.favorites-selection {
+  hr {
+    border: 1px solid #FF894F;
+    margin: 0 1rem 2rem 1rem;
+  }
+}
+
+.logout-selection {
+  margin-bottom: 2rem;
 }
