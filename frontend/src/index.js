@@ -44,14 +44,14 @@ document.addEventListener("DOMContentLoaded", () => {
   // Render our root component and pass in the store as a prop
   const root = document.getElementById("root");
 
-  window.store = store
-  window.dispatch = store.dispatch
-  window.getState = store.getState
-  window.axios = axios
-  window.fetchUserFavorites = fetchUserFavorites
-  window.favoriteEvent = favoriteEvent
-  window.unfavoriteEvent = unfavoriteEvent
-  window.fetchUserArtists = fetchUserArtists
+  // window.store = store
+  // window.dispatch = store.dispatch
+  // window.getState = store.getState
+  // window.axios = axios
+  // window.fetchUserFavorites = fetchUserFavorites
+  // window.favoriteEvent = favoriteEvent
+  // window.unfavoriteEvent = unfavoriteEvent
+  // window.fetchUserArtists = fetchUserArtists
 
   ReactDOM.render(<Root store={store} />, root);
 });
