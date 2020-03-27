@@ -1,52 +1,59 @@
-# music_maestro
+# [Music Maestro](https://music-maestro.herokuapp.com/)
 
-## Background & Overview 
-  Music Maestro provides a secure platform for artists and venues 
-  to share information about concerts. Additionlly, Music Maestro helps music 
-  fans discover new music in their area.
+Music Maestro is a full-stack app that allows users to search for artists, venues and musical events. Our goal was to recreate some of the features of Ticketmaster, in particular, the search feature while improving the user experience.
 
-## Functionalilty & MVP
-  * User Auth 
-  * Main Page Search(artist, venues, location, date)
-  * Discover Music Feed: Based on user preferences. 
-  * Follows: A user can follow and unfollow artists and venues.   
-  * Post: Users can post, delete, edit their own events. Once posted, an event
-    can be viewed publicly.
-  * Favorite: A user can favorite and unfavorite an event. 
+## Technologies
+* React
+* Redux
+* MongoDB
+* Mongoose
+* Express
+* Node
+* Amazon Web Services
+* Heroku
 
-## Technologies & Technical Challenges 
-  * Backend 
-    - Express 
-    - Node
-    - MongoDB
-  * Frontend
-    - React
-    - Redux  
+## Features 
+### Search
 
-## Group Members & Work Breakdown
-  * Nicole
-  * Jacob
-  * Philippe 
+  MongoDB's text index was used for the basis of our search. Initially, converting the artists' and venues' properties to foreign key arrays left us unable to search them. To circumvent that challenge, we created a tags column which included the text version of the collections' information. In addition, we used ".populate()" to populate the foreign keys that were associated with the search results.
 
-  * User Auth
-    - schema 
-    - routes / controller 
-    - model
-    - components 
-    - actions 
-    - util
-    - reducers 
-  * Main Page 
-    public / private 
-      - google maps JS API (search)
-      - react date picker (search)
-      - using a text field to search the database for a venue or artist 
-    private
-      - discover music feed 
-  * Seed / CRUD
-    - seed the database 
-    - initialize CRUD for posts 
-  * Follows 
-    - venues 
-    - artists 
+  ```javascript
+    router.get("/search", (req, res) => {
+      Event
+        .find({
+          $text: {
+            $search: `${req.query.search}`
+          }
+        })
+        .populate("venue")
+        .populate("artists")
+        .then(foundEvents => {
+          console.log(foundEvents)
+
+          if (foundEvents.length > 0) {
+            res.json(foundEvents);
+          } else {
+            res.json([{error: "NO SEARCH RESULTS"}])
+          }
+        })
+    });
+  ```
+
+### Follows/Favorites
+
+  1:M associations were used to store artist, venue and event ids on the user, which are then asychronously fetched from the database and served up to the frontend.
+
+  ```javascript
+    router.delete("/:user_id/events/:event_id/favorite", async (req, res) => {
+      let user = await User.findById(req.params.user_id);
+      user.favorites.events.remove(req.params.event_id);
+      user = await user.save();
+      res.json(user);
+    });
+  ```
   
+
+
+
+
+
