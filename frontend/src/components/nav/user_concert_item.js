@@ -5,7 +5,21 @@ const UserConcertItem = ({ result }) => {
 //  let eventDate = result.eventDate.toISOString();
 
 //  console.log(eventDate);
- 
+
+  const eventDate = new Date(result.eventDate);
+  const hours = eventDate.getHours();
+  const minutes = eventDate.getMinutes();
+  const month = eventDate.getMonth();
+  const date = eventDate.getDate();
+  const year = eventDate.getFullYear();
+
+  let minutesv2;
+
+  if (minutes < 10) {
+    minutesv2 = `0${minutes}`
+  }
+
+  const fullDate = `${month}/${date}/${year} at ${hours}:${minutesv2}`
 
   return (
     <li>
@@ -20,7 +34,7 @@ const UserConcertItem = ({ result }) => {
             </ul>
           </div>
           <div className="result-venue">{result.venue.name}</div>
-        <div className="result-date">{result.eventDate}</div>
+        <div className="result-date">{fullDate}</div>
       </div>
     </li>
   );

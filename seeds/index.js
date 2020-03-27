@@ -3,9 +3,9 @@ const fs = require("fs");
 const { exec } = require("child_process");
 const db = require("../config/keys").mongoURI;
 
-const venues = require("./data/Venue");
+const events = require("./data/Event");
 
-const data = { venues };
+const data = { events };
 
 const output = "./seeds/output";
 

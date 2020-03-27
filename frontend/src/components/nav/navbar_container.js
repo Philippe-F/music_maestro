@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import { logout } from "../../actions/session_actions";
 import { openModal, closeModal } from '../../actions/modal_actions'
-import { searchConcerts } from "../../actions/search_actions";
+import { searchConcerts, clearSearchResults} from "../../actions/search_actions";
 
 import NavBar from "./navbar";
 
@@ -15,7 +15,8 @@ const mapDispatchToProps = dispatch => ({
   logout: () => dispatch(logout()),
   openModal: modal => dispatch(openModal(modal)),
   closeModal: () => dispatch(closeModal),
-  searchConcerts: search => dispatch(searchConcerts(search))
+  searchConcerts: search => dispatch(searchConcerts(search)),
+  clearSearchResults: () => dispatch(clearSearchResults())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(NavBar);

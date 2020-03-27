@@ -15,10 +15,14 @@ const EventSchema = new Schema({
   timestamp: {
     type: Date,
     default: Date.now
+  },
+  tags: {
+    type: String, 
+    required: true
   }
 });
 
-EventSchema.index({ artists: "text", venue: "text", name: "text" })
+EventSchema.index({ tags: "text", name: "text" })
 module.exports = Event = mongoose.model("Event", EventSchema); 
 
 
