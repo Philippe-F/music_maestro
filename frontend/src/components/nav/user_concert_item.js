@@ -4,7 +4,6 @@ const UserConcertItem = ({ result }) => {
 
 //  let eventDate = result.eventDate.toISOString();
 
-//  console.log(eventDate);
 
   const eventDate = new Date(result.eventDate);
   const hours = eventDate.getHours();

@@ -7,7 +7,6 @@ class DiscoverItem extends React.Component {
     const { venue, artists, name, eventDate } = this.props.event
     const artist = artists[0]
     const date = new Date(eventDate).toDateString()
-    // console.log(artist._id, venue._id)
     return (
       <div className="discover-item-wrapper">
         <div className="">

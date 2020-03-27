@@ -17,6 +17,7 @@ import '../stylesheets/reset.css';
 import "../stylesheets/nav.scss";
 import "../stylesheets/artist.scss"
 import "../stylesheets/venue.scss"
+import "../stylesheets/errors.scss"
 
 
 const App = () => (
