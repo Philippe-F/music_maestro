@@ -2,7 +2,9 @@ import * as APIUtil from "../util/user_api_util";
 export const RECEIVE_ALL_EVENTS = "RECEIVE_ALL_EVENTS";
 export const RECEIVE_USER_FAVORITES = "RECEIVE_USER_FAVORITES";
 export const RECEIVE_USER_ARTISTS = "RECEIVE_USER_ARTISTS";
+export const RECEIVE_USER_ARTIST = "RECEIVE_USER_ARTIST";
 export const RECEIVE_USER_VENUES = "RECEIVE_USER_VENUES";
+export const RECEIVE_USER_EVENTS = "RECEIVE_USER_EVENTS"
 
 export const receiveAllEvents = events => ({
   type: RECEIVE_ALL_EVENTS,
@@ -19,10 +21,20 @@ export const receiveUserArtists = data => ({
   data: data
 });
 
+export const receiveUserArtist = data => ({
+  type: RECEIVE_USER_ARTIST,
+  data: data
+});
+
 export const receiveUserVenues = data => ({
   type: RECEIVE_USER_VENUES,
   data: data
 });
+
+const receiveUserEvents = events => ({
+  type: RECEIVE_USER_EVENTS,
+  events
+})
 
 export const fetchEvents = () => dispatch => (
   APIUtil.receiveAllEvents()
@@ -42,8 +54,20 @@ export const fetchUserArtists = userId => dispatch => (
     .catch(err => console.log(err))
 );
 
+export const fetchUserArtist = (userId, artistId) => dispatch => (
+  APIUtil.showUserArtist(userId, artistId)
+    .then(artist => dispatch(receiveUserArtists(artist)))
+    .catch(err => console.log(err))
+);
+
 export const fetchUserVenues = userId => dispatch => (
   APIUtil.receiveUserVenues(userId)
     .then(venues => dispatch(receiveUserVenues(venues)))
     .catch(err => console.log(err))
 );
+
+export const fetchUserEvents = userId => dispatch => (
+  APIUtil.receiveUserEvents(userId)
+    .then(events => dispatch(receiveUserEvents(events)))
+    .catch(err => console.log(err))
+)

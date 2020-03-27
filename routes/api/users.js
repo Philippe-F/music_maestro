@@ -19,7 +19,6 @@ router.get('/current', passport.authenticate('jwt', {session: false}), (req, res
   });
 })
 
-
 router.post("/login", (req, res) => {
   const { errors, isValid } = validateLoginInput(req.body);
 
@@ -105,11 +104,14 @@ router.post("/register", (req, res) => {
 router.get("/events", (req, res) => {
   // get all events 
   Event.find()
-  // pass in current user location when google maps api is finished 
-  .limit(20) 
-  .sort({ date: -1 })
-  .then(events => res.json(events))
-  .catch(err => res.status(400).json(err)) 
+    // populate the associations
+    .populate("venue")
+    .populate("artists")
+    // pass in current user location when google maps api is finished
+    .limit(20)
+    .sort({ date: -1 })
+    .then(events => res.json(events))
+    .catch(err => res.status(400).json(err)); 
 });
 
 ////////////////FETCHING DATA////////////////
@@ -136,6 +138,11 @@ router.get("/:user_id/my_venues", async (req, res) => {
     .populate("follows.venues");
   res.json(user.follows.venues);
 });
+
+router.get("/:user_id/events", async (req, res) => {
+  const user = await User.findById(req.params.user_id)
+  res.json(user.favorites.events)
+})
 
 ///////////////FOLLOWS////////////////
 
@@ -196,14 +203,24 @@ router.post("/:user_id/events/:event_id/favorite", async(req, res) => {
 });
 
 router.delete("/:user_id/events/:event_id/favorite", async (req, res) => {
-  const event = await Event.findById(req.params.event_id);
   let user = await User.findById(req.params.user_id);
-  const index = user.favorites.events.indexOf(event._id);
-  delete user.favorites.events[index];
+  user.favorites.events.remove(req.params.event_id);
   user = await user.save();
   res.json(user);
 });
 
+// router.delete("/:user_id/artists/:artist_id/follow", async (req, res) => {
+//   let user = await User.findById(req.params.user_id);
+//   user.follows.artists.remove(req.params.artist_id);
+//   user = await user.save();
+//   res.json(user);
+// })
 
+
+  // res.send(user)
+
+  // res.send("hello")
+
+// })
 
 module.exports = router; 

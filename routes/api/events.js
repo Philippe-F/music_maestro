@@ -12,7 +12,7 @@ router.get("/search", (req, res) => {
       .populate("venue")
       .populate("artists")
       .then(foundEvents => {
-        console.log(foundEvents)
+        // console.log(foundEvents)
       //.catch(error => console.log(error));
 
         if (foundEvents.length > 0) {
