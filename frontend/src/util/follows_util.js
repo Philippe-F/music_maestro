@@ -2,7 +2,6 @@ import axios from 'axios';
 
 
 export const followVenue = (userId, venueId) => {
-  // console.log(userId, venueId);
   return axios.post(`/api/users/${userId}/venues/${venueId}/follow`)
 }
 
