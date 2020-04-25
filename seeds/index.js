@@ -5,7 +5,11 @@ const db = require("../config/keys").mongoURI;
 
 const events = require("./data/Event");
 
-const data = { events };
+const artists = require("./data/Artist");
+
+const venues = require("./data/Venue");
+
+const data = { events, artists, venues };
 
 const output = "./seeds/output";
 
@@ -14,7 +18,7 @@ if (!fs.existsSync(output)) {
 }
 
 Object.entries(data).forEach(([key, value]) => {
-  fs.writeFile(`seeds/output/${key}.json`, JSON.stringify(value), err => {
+  fs.writeFile(`seeds/output/${key}.json`, JSON.stringify(value), (err) => {
     if (err) throw err;
     console.log(`The file, ${key}.json has been saved!`);
   });
