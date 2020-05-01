@@ -1,6 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-const UserConcertItem = ({ result }) => {
+const UserConcertItem = ({ result, searchClick }) => {
 
 //  let eventDate = result.eventDate.toISOString();
 
@@ -20,12 +21,11 @@ const UserConcertItem = ({ result }) => {
   }
 
   const fullDate = `${month}/${date}/${year} at ${hours}:${minutesv2}`
-
+  console.log(result);
   return (
     <li>
       <div className="result">
-          <div className="not-found-msg">{result.error}</div>
-          <div className="result-name">{result.name} </div>
+          <div className="result-name"><Link to={`/events/${result._id}`} onClick={() => searchClick()}>{result.name}</Link> </div>
           <div className="result-artist">
             <ul>
               {result.artists.map(artist => {
