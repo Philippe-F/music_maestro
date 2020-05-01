@@ -131,7 +131,6 @@ class NavBar extends React.Component {
   searchClick() {
     // console.log(this.state.searchOpen);
     if (this.state.searchOpen) {
-      this.clearSearch();
       this.setState({ searchOpen: false });
     } else {
       this.clearSearch();
@@ -152,9 +151,17 @@ class NavBar extends React.Component {
             <ul>
               {this.props.userConcerts.map((result, i) => {
                 return result.error ? (
-                  <ErrorItem key={i} result={result} />
+                  <ErrorItem
+                    key={i}
+                    result={result}
+                    searchClick={this.searchClick}
+                  />
                 ) : (
-                  <UserConcertItem key={result.id} result={result} />
+                  <UserConcertItem
+                    key={result.id}
+                    result={result}
+                    searchClick={this.searchClick}
+                  />
                 );
               })}
             </ul> ) : null
