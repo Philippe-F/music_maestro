@@ -29,11 +29,8 @@ class Event extends React.Component {
     const favIds = this.props.favorites.map((fav) => {
       return fav._id
     })
-    // console.log(favIds)
-    // console.log(this.props.favorites, favIds, eventId)
     if (this.props.favorites.includes(eventId) || favIds.includes(eventId)) {
       this.props.unfavoriteEvent(userId, eventId)
-      // console.log("inside the if")
     } else {
       this.props.favoriteEvent(userId, eventId)
     }
@@ -60,7 +57,6 @@ class Event extends React.Component {
   }
 
   render() {
-    // console.log(this.props.favorites)
     if (this.props.event && this.props.favorites) {
       const { event } = this.props
       return (

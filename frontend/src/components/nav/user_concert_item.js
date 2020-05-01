@@ -1,11 +1,9 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 
 const UserConcertItem = ({ result, searchClick }) => {
+  //  let eventDate = result.eventDate.toISOString();
 
-//  let eventDate = result.eventDate.toISOString();
-
-//  console.log(eventDate);
 
   const eventDate = new Date(result.eventDate);
   const hours = eventDate.getHours();
@@ -17,7 +15,7 @@ const UserConcertItem = ({ result, searchClick }) => {
   let minutesv2;
 
   if (minutes < 10) {
-    minutesv2 = `0${minutes}`
+    minutesv2 = `0${minutes}`;
   }
 
   const fullDate = `${month}/${date}/${year} at ${hours}:${minutesv2}`
@@ -38,6 +36,6 @@ const UserConcertItem = ({ result, searchClick }) => {
       </div>
     </li>
   );
-}
+};
 
-export default UserConcertItem; 
+export default UserConcertItem;

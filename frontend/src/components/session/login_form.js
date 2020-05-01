@@ -40,11 +40,12 @@ class LoginForm extends React.Component {
       email: this.state.email,
       password: this.state.password
     };
-
     this.props.login(user)
       .then((res) => {
         if (!res.errors) {
           this.props.closeModal()
+        } else {
+          console.log("begin", res, "end")
         }
       })
   }
@@ -82,7 +83,11 @@ class LoginForm extends React.Component {
               placeholder="Password"
             />
             <br />
-            <input className="form-button" type="submit" value="Submit" />
+            <input 
+              className="form-button" 
+              type="submit" 
+              value="Submit"
+            />
             {/* {this.renderErrors()} */}
           </div>
         </form>

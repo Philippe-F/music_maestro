@@ -43,7 +43,7 @@ class SignupForm extends React.Component {
     return (
       <section className="primary">
         <form className="signup" onSubmit={this.handleSubmit}>
-          <h1 class="signup-heading">Create Account</h1>
+          <h1 className="signup-heading">Create Account</h1>
           {/* <div className="signup-form"> */}
             <br />
             <input
