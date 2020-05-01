@@ -23,6 +23,12 @@ class NavBar extends React.Component {
     this.clearSearch = this.clearSearch.bind(this);
   }
 
+  componentDidMount() {
+    if (this.props.loggedIn) {
+      this.props.fetchUserFavorites(this.props.user.id)
+    }
+  }
+
   clearSearch() {
     this.setState({ search: "" });
   }
@@ -31,6 +37,25 @@ class NavBar extends React.Component {
     e.preventDefault();
     this.props.logout();
     this.openUserModal();
+  }
+
+  mapFavoritesToItems() {
+    
+    if (this.props.userFavorites) {
+      const favItems = this.props.userFavorites.map(fav => {
+        return (
+          <Link to={`/events/${fav._id}`}>
+            <div  className="user-dropdown-item">
+              <h3 className="user-dropdown-title">{fav.name}</h3>
+              <p className="user-dropdown-description">{fav.eventDate}</p>
+            </div>
+          </Link>
+        )
+      })
+      return favItems
+    } else {
+      return null
+    }
   }
 
   getLinks() {
@@ -42,9 +67,18 @@ class NavBar extends React.Component {
           </button>
           {this.userDropdown()}
           <div className={`user-dropdown ${this.state.stateOpen}`}>
-            <div className="user-dropdown-item" onClick={this.logoutUser}>
-              <h3 className="user-dropdown-title">Log Out</h3>
-              <p className="user-dropdown-description">See you again soon!</p>
+            <div className="favorites-selection">
+              <div className="favorites-header">
+                FAVORITES 
+              </div>
+              <hr></hr>
+              {this.mapFavoritesToItems()}
+            </div>
+            <div className="logout-selection">
+              <div className="user-dropdown-item" onClick={this.logoutUser}>
+                <h3 className="user-dropdown-title">Log Out</h3>
+                <p className="user-dropdown-description">See you again soon!</p>
+              </div>
             </div>
           </div>
         </div>
