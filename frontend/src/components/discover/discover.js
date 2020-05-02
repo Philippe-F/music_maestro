@@ -14,6 +14,7 @@ export default class Discover extends React.Component {
     this.props.fetchEvents().then();
     this.props.fetchUserArtists(id);
     this.props.fetchUserVenues(id);
+    this.agg = this.aggregateEvents();
   }
 
   aggregateEvents() {
@@ -22,6 +23,7 @@ export default class Discover extends React.Component {
     let venues = null;
     let userEvents = {};
     if (this.props.events && this.props.venues && this.props.artists) {
+      console.log("inside this thing");
       artists = this.props.artists.data.map((artist) => {
         return artist._id;
       });
@@ -53,16 +55,20 @@ export default class Discover extends React.Component {
   }
 
   userEvents() {
-    const userE = this.aggregateEvents();
-    if (userE) {
-      const events = Object.values(userE);
-      const discoverEvents = events.map((event) => {
-        return <DiscoverItem key={event._id} event={event} />;
-      });
-      return discoverEvents;
-    } else {
-      return null;
+    const { userFavorites } = this.props.user;
+    if (userFavorites) {
+      console.log(userFavorites);
     }
+    // const userE = this.aggregateEvents();
+    // if (userE) {
+    //   const events = Object.values(userE);
+    //   const discoverEvents = events.map((event) => {
+    //     return <DiscoverItem key={event._id} event={event} />;
+    //   });
+    //   return discoverEvents;
+    // } else {
+    //   return null;
+    // }
   }
 
   render() {
