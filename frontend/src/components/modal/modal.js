@@ -27,15 +27,12 @@ class Modal extends React.Component {
     }
 
     return (
-      <div onClick={closeModal} className="overlay">
+      <div className="overlay">
         <div className="content-wrapper">
           <div className="content">
-            {/* <button
-              onClick={this.openUserModal}
-              className={`modal-close-button`}
-            >
+            <button onClick={closeModal} className={`modal-close-button`}>
               <i className="fas fa-times"></i>
-            </button> */}
+            </button>
             <div className="authentication">
               <div className="mobile-tabs">
                 <button
@@ -46,7 +43,7 @@ class Modal extends React.Component {
                 </button>
                 <button
                   className={activeSignUp}
-                  onClick={() => this.props.openModal("login")}
+                  onClick={() => this.props.openModal("signup")}
                 >
                   Create Account
                 </button>
