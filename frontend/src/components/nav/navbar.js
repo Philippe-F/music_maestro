@@ -256,6 +256,7 @@ class NavBar extends React.Component {
   }
 
   render() {
+    console.log("inside render");
     return (
       <div className="nav">
         <div className="nav-content">
