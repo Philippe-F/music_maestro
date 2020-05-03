@@ -101,22 +101,27 @@ class NavBar extends React.Component {
           </button>
           {this.userDropdown()}
           <div className={`user-dropdown ${this.state.stateOpen}`}>
-            <div className={`user-dropdown-top`}>
-              <div
-                className="user-dropdown-item"
-                onClick={() => this.formModal("signup")}
-              >
-                <h3 className="user-dropdown-title">Create Account</h3>
-                <p className="user-dropdown-description">Join for free</p>
+            <div className="user-dropdown-inner">
+              <div className={`user-dropdown-top`}>
+                <div
+                  className="user-dropdown-item"
+                  onClick={() => this.formModal("signup")}
+                >
+                  <h3 className="user-dropdown-title">Create Account</h3>
+                  <p className="user-dropdown-description">Join for free</p>
+                </div>
+                <div
+                  className="user-dropdown-item"
+                  onClick={() => this.formModal("login")}
+                >
+                  <h3 className="user-dropdown-title">Sign In</h3>
+                  <p className="user-dropdown-description">
+                    Already joined Music Maestro? Welcome Back!
+                  </p>
+                </div>
               </div>
-              <div
-                className="user-dropdown-item"
-                onClick={() => this.formModal("login")}
-              >
-                <h3 className="user-dropdown-title">Sign In</h3>
-                <p className="user-dropdown-description">
-                  Already joined Music Maestro? Welcome Back!
-                </p>
+              <div className="user-dropdown-mid">
+                <About />
               </div>
             </div>
           </div>
