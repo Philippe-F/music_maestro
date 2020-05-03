@@ -129,13 +129,21 @@ router.get("/:user_id/my_favorites", async (req, res) => {
   // .then(user => res.json(user.favorites.events))
   // .catch(err => res.status(400).json(err))
 
-  const user = await User.findById(req.params.user_id).populate({
-    path: "favorites.events",
-    populate: {
-      path: "artists",
-      model: "Artist",
-    },
-  });
+  const user = await User.findById(req.params.user_id)
+    .populate({
+      path: "favorites.events",
+      populate: {
+        path: "artists",
+        model: "Artist",
+      },
+    })
+    .populate({
+      path: "favorites.events",
+      populate: {
+        path: "venue",
+        model: "Venue",
+      },
+    });
   res.json(user.favorites.events);
 });
 
