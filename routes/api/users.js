@@ -214,6 +214,23 @@ router.post("/:user_id/events/:event_id/favorite", async (req, res) => {
   let user = await User.findById(req.params.user_id);
   user.favorites.events.push(event._id);
   user = await user.save();
+
+  user = await User.findById(req.params.user_id)
+    .populate({
+      path: "favorites.events",
+      populate: {
+        path: "artists",
+        model: "Artist",
+      },
+    })
+    .populate({
+      path: "favorites.events",
+      populate: {
+        path: "venue",
+        model: "Venue",
+      },
+    });
+
   res.json(user);
 });
 
@@ -221,6 +238,23 @@ router.delete("/:user_id/events/:event_id/favorite", async (req, res) => {
   let user = await User.findById(req.params.user_id);
   user.favorites.events.remove(req.params.event_id);
   user = await user.save();
+
+  user = await User.findById(req.params.user_id)
+    .populate({
+      path: "favorites.events",
+      populate: {
+        path: "artists",
+        model: "Artist",
+      },
+    })
+    .populate({
+      path: "favorites.events",
+      populate: {
+        path: "venue",
+        model: "Venue",
+      },
+    });
+
   res.json(user);
 });
 
