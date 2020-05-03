@@ -145,6 +145,18 @@
   transition: color .2s ease;
 }
 
+.user-dropdown-inner {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#about-icon {
+  font-size: 2rem;
+  margin-right: 2rem;
+}
+
 .overlay {
   position: fixed;
   top: 0;

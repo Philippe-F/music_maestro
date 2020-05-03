@@ -1,7 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import UserConcertItem from './user_concert_item'
-import ErrorItem from './error_item'
+import UserConcertItem from "./user_concert_item";
+import ErrorItem from "./error_item";
+import { DataPipeline } from "aws-sdk";
+import About from "../about/About";
 
 class NavBar extends React.Component {
   constructor(props) {
@@ -10,7 +12,7 @@ class NavBar extends React.Component {
       dropdownOpen: false,
       stateOpen: null,
       searchOpen: false,
-      search: ""
+      search: "",
     };
     this.logoutUser = this.logoutUser.bind(this);
     this.getLinks = this.getLinks.bind(this);
@@ -25,7 +27,7 @@ class NavBar extends React.Component {
 
   componentDidMount() {
     if (this.props.loggedIn) {
-      this.props.fetchUserFavorites(this.props.user.id)
+      this.props.fetchUserFavorites(this.props.user.id);
     }
   }
 
@@ -40,21 +42,22 @@ class NavBar extends React.Component {
   }
 
   mapFavoritesToItems() {
-    
-    if (this.props.userFavorites) {
-      const favItems = this.props.userFavorites.map(fav => {
+    const { userFavorites } = this.props;
+    if (userFavorites) {
+      const favItems = this.props.userFavorites.map((fav) => {
+        const date = new Date(fav.eventDate).toDateString();
         return (
           <Link to={`/events/${fav._id}`}>
-            <div  className="user-dropdown-item">
+            <div className="user-dropdown-item">
               <h3 className="user-dropdown-title">{fav.name}</h3>
-              <p className="user-dropdown-description">{fav.eventDate}</p>
+              <p className="user-dropdown-description">{date}</p>
             </div>
           </Link>
-        )
-      })
-      return favItems
+        );
+      });
+      return favItems;
     } else {
-      return null
+      return null;
     }
   }
 
@@ -67,17 +70,24 @@ class NavBar extends React.Component {
           </button>
           {this.userDropdown()}
           <div className={`user-dropdown ${this.state.stateOpen}`}>
-            <div className="favorites-selection">
-              <div className="favorites-header">
-                FAVORITES 
+            <div className="user-dropdown-inner">
+              <div className="user-dropdown-top">
+                <div className="favorites-selection">
+                  <div className="favorites-header">FAVORITES</div>
+                  <hr></hr>
+                  {this.mapFavoritesToItems()}
+                </div>
               </div>
-              <hr></hr>
-              {this.mapFavoritesToItems()}
-            </div>
-            <div className="logout-selection">
-              <div className="user-dropdown-item" onClick={this.logoutUser}>
-                <h3 className="user-dropdown-title">Log Out</h3>
-                <p className="user-dropdown-description">See you again soon!</p>
+              <div className="user-dropdown-mid">
+                <About />
+              </div>
+              <div className="logout-selection">
+                <div className="user-dropdown-item" onClick={this.logoutUser}>
+                  <h3 className="user-dropdown-title">Log Out</h3>
+                  <p className="user-dropdown-description">
+                    See you again soon!
+                  </p>
+                </div>
               </div>
             </div>
           </div>
@@ -91,21 +101,23 @@ class NavBar extends React.Component {
           </button>
           {this.userDropdown()}
           <div className={`user-dropdown ${this.state.stateOpen}`}>
-            <div
-              className="user-dropdown-item"
-              onClick={() => this.formModal("signup")}
-            >
-              <h3 className="user-dropdown-title">Create Account</h3>
-              <p className="user-dropdown-description">Join for free</p>
-            </div>
-            <div
-              className="user-dropdown-item"
-              onClick={() => this.formModal("login")}
-            >
-              <h3 className="user-dropdown-title">Sign In</h3>
-              <p className="user-dropdown-description">
-                Already joined Music Maestro? Welcome Back!
-              </p>
+            <div className={`user-dropdown-top`}>
+              <div
+                className="user-dropdown-item"
+                onClick={() => this.formModal("signup")}
+              >
+                <h3 className="user-dropdown-title">Create Account</h3>
+                <p className="user-dropdown-description">Join for free</p>
+              </div>
+              <div
+                className="user-dropdown-item"
+                onClick={() => this.formModal("login")}
+              >
+                <h3 className="user-dropdown-title">Sign In</h3>
+                <p className="user-dropdown-description">
+                  Already joined Music Maestro? Welcome Back!
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -114,7 +126,7 @@ class NavBar extends React.Component {
   }
 
   updateSearch() {
-    return e => this.setState({ search: e.currentTarget.value });
+    return (e) => this.setState({ search: e.currentTarget.value });
   }
 
   userHeader() {
@@ -147,12 +159,12 @@ class NavBar extends React.Component {
     if (this.state.dropdownOpen) {
       return this.setState({
         dropdownOpen: false,
-        stateOpen: null
+        stateOpen: null,
       });
     } else {
       return this.setState({
         dropdownOpen: true,
-        stateOpen: "state-open"
+        stateOpen: "state-open",
       });
     }
   }
@@ -177,34 +189,30 @@ class NavBar extends React.Component {
   }
 
   renderSearchResults() {
-
     if (this.props.userConcerts) {
-      return(
-           this.props.userConcerts ? (
-            <ul>
-              {this.props.userConcerts.map((result, i) => {
-                return result.error ? (
-                  <ErrorItem
-                    key={i}
-                    result={result}
-                    searchClick={this.searchClick}
-                  />
-                ) : (
-                  <UserConcertItem
-                    key={result.id}
-                    result={result}
-                    searchClick={this.searchClick}
-                  />
-                );
-              })}
-            </ul> ) : null
-      )
+      return this.props.userConcerts ? (
+        <ul>
+          {this.props.userConcerts.map((result, i) => {
+            return result.error ? (
+              <ErrorItem
+                key={i}
+                result={result}
+                searchClick={this.searchClick}
+              />
+            ) : (
+              <UserConcertItem
+                key={result.id}
+                result={result}
+                searchClick={this.searchClick}
+              />
+            );
+          })}
+        </ul>
+      ) : null;
     } else {
-      return null
+      return null;
     }
   }
-
-
 
   search() {
     if (this.state.searchOpen) {
@@ -226,10 +234,7 @@ class NavBar extends React.Component {
                       value={this.state.search}
                       onChange={this.updateSearch()}
                     ></input>
-                    <button
-                      className="search-button"
-        
-                    >
+                    <button className="search-button">
                       <i className="fas fa-search search-icon"></i>
                     </button>
                   </form>
