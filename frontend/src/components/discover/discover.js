@@ -57,7 +57,9 @@ export default class Discover extends React.Component {
   userEvents() {
     const { userFavorites } = this.props.user;
     if (userFavorites) {
-      console.log(userFavorites);
+      return userFavorites.map((event) => (
+        <DiscoverItem key={event._id} event={event} />
+      ));
     }
     // const userE = this.aggregateEvents();
     // if (userE) {
