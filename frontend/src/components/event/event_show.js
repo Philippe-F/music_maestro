@@ -1,22 +1,22 @@
-import React from 'react'
-import DiscoverContainer from '../discover/discover_container'
-import { Link } from 'react-router-dom'
-import DiscoverItem from '../discover/discover_item'
+import React from "react";
+import DiscoverContainer from "../discover/discover_container";
+import { Link } from "react-router-dom";
+import DiscoverItem from "../discover/discover_item";
 
 class Event extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
-      favorites: {}
-    }
+      favorites: {},
+    };
   }
 
   componentDidMount() {
-    this.props.fetchEvents()
-    this.props.fetchUserFavorites(this.props.currentUser.id)
+    this.props.fetchEvents();
+    this.props.fetchUserFavorites(this.props.currentUser.id);
     this.setState({
-      favorites: this.props.favorites
-    })
+      favorites: this.props.favorites,
+    });
   }
 
   componentDidUpdate() {
@@ -24,41 +24,41 @@ class Event extends React.Component {
   }
 
   handleFavorite() {
-    const userId = this.props.currentUser.id
-    const eventId = this.props.event._id
+    const userId = this.props.currentUser.id;
+    const eventId = this.props.event._id;
     const favIds = this.props.favorites.map((fav) => {
-      return fav._id
-    })
+      return fav._id;
+    });
     if (this.props.favorites.includes(eventId) || favIds.includes(eventId)) {
-      this.props.unfavoriteEvent(userId, eventId)
+      this.props.unfavoriteEvent(userId, eventId);
     } else {
-      this.props.favoriteEvent(userId, eventId)
+      this.props.favoriteEvent(userId, eventId);
     }
   }
 
   star() {
-    const eventId = this.props.event._id
+    const eventId = this.props.event._id;
     const favIds = this.props.favorites.map((fav) => {
-      return fav._id
-    })
+      return fav._id;
+    });
     if (this.props.favorites.includes(eventId) || favIds.includes(eventId)) {
       return (
         <div className="img-wrapper">
           <i className="fas fa-star" id="artist-star"></i>
         </div>
-      )
+      );
     } else {
       return (
         <div className="img-wrapper">
           <i className="far fa-star" id="artist-star"></i>
         </div>
-      )
+      );
     }
   }
 
   render() {
     if (this.props.event && this.props.favorites) {
-      const { event } = this.props
+      const { event } = this.props;
       return (
         <div className="responsive">
           <div className="discover-wrapper">
@@ -68,7 +68,7 @@ class Event extends React.Component {
                 <button
                   onClick={() => this.handleFavorite()}
                   className="form-button action-button"
-                  >
+                >
                   {this.star()}
                   <span>Favorite</span>
                 </button>
@@ -76,11 +76,11 @@ class Event extends React.Component {
             </div>
           </div>
         </div>
-      )
+      );
     } else {
-      return null
+      return null;
     }
   }
 }
 
-export default Event
+export default Event;
