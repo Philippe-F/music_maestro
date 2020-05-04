@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import UserConcertItem from "./user_concert_item";
 import ErrorItem from "./error_item";
-import { DataPipeline } from "aws-sdk";
+// import { DataPipeline } from "aws-sdk";
 import About from "../about/About";
 
 class NavBar extends React.Component {
@@ -189,7 +189,8 @@ class NavBar extends React.Component {
     }
   }
 
-  handleSearch() {
+  handleSearch(e) {
+    e.preventDefault();
     this.props.searchConcerts(this.state.search);
   }
 
@@ -231,7 +232,7 @@ class NavBar extends React.Component {
               <div className="search-content">
                 <div className="search-input-wrapper">
                   {/* SEARCH BAR FORM */}
-                  <form onSubmit={this.handleSearch}>
+                  <form onSubmit={(e) => this.handleSearch(e)}>
                     <input
                       type="text"
                       placeholder="Search..."
@@ -256,7 +257,6 @@ class NavBar extends React.Component {
   }
 
   render() {
-    console.log("inside render");
     return (
       <div className="nav">
         <div className="nav-content">
