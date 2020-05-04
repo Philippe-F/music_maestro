@@ -5,7 +5,7 @@ import configureStore from "./store/store";
 import jwt_decode from "jwt-decode";
 import { setAuthToken } from "./util/session_api_util";
 import { logout } from "./actions/session_actions";
-import { fetchUserFavorites } from './actions/user_actions'
+import { fetchUserFavorites, fetchUserArtists } from './actions/user_actions'
 import axios from 'axios'
 import { favoriteEvent, unfavoriteEvent } from './util/favorites_util'
 
@@ -44,13 +44,15 @@ document.addEventListener("DOMContentLoaded", () => {
   // Render our root component and pass in the store as a prop
   const root = document.getElementById("root");
 
-  window.store = store
-  window.dispatch = store.dispatch
-  window.getState = store.getState
-  window.axios = axios
-  window.fetchUserFavorites = fetchUserFavorites
-  window.favoriteEvent = favoriteEvent
-  window.unfavoriteEvent = unfavoriteEvent
+  // window.store = store
+  // window.dispatch = store.dispatch
+  // window.getState = store.getState
+  // window.axios = axios
+  // window.fetchUserFavorites = fetchUserFavorites
+  // window.favoriteEvent = favoriteEvent
+  // window.unfavoriteEvent = unfavoriteEvent
+  // window.fetchUserArtists = fetchUserArtists
+
 
 
   window.followVenue = followVenue;
@@ -60,5 +62,6 @@ document.addEventListener("DOMContentLoaded", () => {
   window.favoriteEvent = favoriteEvent;
   window.unfavoriteEvent = unfavoriteEvent;
   window.store = store;
+
   ReactDOM.render(<Root store={store} />, root);
 });

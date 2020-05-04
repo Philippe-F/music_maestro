@@ -19,6 +19,7 @@ import '../stylesheets/reset.css';
 import "../stylesheets/nav.scss";
 import "../stylesheets/artist.scss"
 import "../stylesheets/venue.scss"
+import "../stylesheets/errors.scss"
 
 
 const App = () => (
@@ -34,7 +35,7 @@ const App = () => (
       <ProtectedRoute path="/my_favorites" component={FavoriteContainer} />
       <ProtectedRoute path="/my_venues" component={VenueContainer} />
       <Route path="/events/:eventId" component={EventContainer} />
-      <ProtectedRoute path="/my_artists" component={ArtistContainer} />
+      {/* <ProtectedRoute path="/my_artists" component={ArtistContainer} /> */}
       {/* <Route path="/artists" component={ArtistContainer} /> */}
       <Redirect to="/" /> 
     </Switch>

@@ -84,6 +84,7 @@
   height: calc(100% - 4.5rem);
   box-sizing: border-box;
   box-shadow: 0 0 0.5rem 0 rgba(0,0,0,.5);
+  // justify-content: space-between;
 }
 
 .dropdown-header {
@@ -142,6 +143,18 @@
   line-height: 1.41;
   color: #88A3AD;
   transition: color .2s ease;
+}
+
+.user-dropdown-inner {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#about-icon {
+  font-size: 2rem;
+  margin-right: 2rem;
 }
 
 .overlay {
@@ -358,7 +371,6 @@ section {
   padding: 1.375rem 0 7.5rem;
   position: relative;
   box-sizing: border-box;
-  cursor: pointer;
   flex: 1;
 }
 
@@ -438,54 +450,6 @@ section {
   font-size: 20px;
 }
 
-
-.err-flash-messages {
-  z-index: 2000;
-  position: fixed;
-  left: 0;
-  right: 0;
-  // transform: translateY(0%);
-  // display: none;
-  background-color: #f45845;
-  // max-height: 0;
-  top: -100px;
-  transition: transform .5s ease-in ;
-  overflow: hidden;
-}
-
-.err-flash-messages.slide-in {
-  display: block;
-  // animation: message-slide-down .2s ease-in-out 0s 1 normal forwards running;
-  transform: translateY(100px);
-  // max-height: 500px;
-  padding: 1.25rem 0;
-}
-
-.erc-flash-messages.slide-out {
-  display: block;
-  animation: message-slide-up .2s ease-in-out 0s 1 normal forwards running;
-}
-
-.error-content {
-  margin: 0 1.25rem;
-  padding-left: 0;
-  padding-right: 2.125rem;
-  position: relative;
-}
-
-.message-list {
-  display: inline-block;
-}
-
-.message {
-  font-size: .8rem;
-  font-family: rubik,Helvetica Neue,helvetica,sans-serif;
-  font-weight: 400;
-  line-height: 1.41;
-  color: #DEF0F7;
-  margin: 0 auto;
-}
-
 .result {
   margin: 0 20px;
   margin-bottom: 20px;
@@ -504,10 +468,22 @@ section {
   color: rgba(222, 240, 247, 0.8);
 }
 
-.not-found-msg {
-  text-align: center;
-  font-size: 1em;
-  color: rgba(222, 240, 247, 1);
-  font-weight: bold;
-  font-style: italic;
+.favorites-header {
+  font-family: 'Helvetica Neue', sans-serif;
+  justify-content: center;
+  color: #FF894F;
+  margin: 3rem 0 1rem 1.2rem;
+  font-weight: 700;
+  font-size: 24px;
+}
+
+.favorites-selection {
+  hr {
+    border: 1px solid #FF894F;
+    margin: 0 1rem 2rem 1rem;
+  }
+}
+
+.logout-selection {
+  margin-bottom: 2rem;
 }

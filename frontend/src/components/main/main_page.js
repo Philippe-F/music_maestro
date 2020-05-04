@@ -1,12 +1,11 @@
 import React from "react";
-import { connect } from 'react-redux';
-import { openModal } from '../../actions/modal_actions';
-import Map from '../search/map';
+import { connect } from "react-redux";
+import { openModal } from "../../actions/modal_actions";
+import Map from "../search/map";
 
 class MainPage extends React.Component {
   render() {
     return (
-
       <div className="responsive">
         <div className="inside">
           <div className="greeting">
@@ -20,22 +19,22 @@ class MainPage extends React.Component {
           </p>
           <div
             className="splash-pg-button"
-            onClick={() => this.props.openModal("signup")}
+            onClick={() => this.props.openModal("login")}
           >
-            <button>Create Account</button>
+            <button>Sign In</button>
           </div>
 
-         {/* <Map />  */}
+          {/* <Map />  */}
         </div>
       </div>
     );
   }
 }
 
-const mSTP = state => ({});
+const mSTP = (state) => ({});
 
-const mDTP = dispatch => ({
-  openModal: field => dispatch(openModal(field))
+const mDTP = (dispatch) => ({
+  openModal: (field) => dispatch(openModal(field)),
 });
 
 export default connect(mSTP, mDTP)(MainPage);
