@@ -65,7 +65,12 @@ export default class Discover extends React.Component {
     const { userFavorites } = this.props.user;
     if (userFavorites) {
       return userFavorites.map((event) => (
-        <DiscoverItem key={event._id} event={event} />
+        <DiscoverItem
+          key={event._id}
+          event={event}
+          id={this.props.id}
+          openModal={this.props.openModal}
+        />
       ));
     }
   }
