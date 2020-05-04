@@ -1,4 +1,4 @@
-# [Music Maestro](https://music-maestro.herokuapp.com/)
+# [Music Maestro](https://musicmaestro.herokuapp.com/)
 
 Music Maestro is a full-stack app that allows users to search for artists, venues and musical events. Our goal was to recreate some of the features of Ticketmaster, in particular, the search feature while improving the user experience.
 
