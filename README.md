@@ -2,6 +2,11 @@
 
 Music Maestro is a full-stack app that allows users to search for artists, venues and musical events. Our goal was to recreate some of the features of Ticketmaster, in particular, the search feature while improving the user experience.
 
+## Created by
+- Jacob Meyer - [LinkedIn](https://www.linkedin.com/in/jacob-p-meyer/) [Github](https://github.com/jacobpmeyer) [Portfolio](https://jacobmeyer.dev)
+- Philippe Fonzin - [LinkedIn](https://www.linkedin.com/in/philippe-fonzin-805701b7/) [Github](https://github.com/Philippe-F) [Portfolio](https://philippefonzin.dev/)
+- Nicole Ohanian - [LinkedIn](https://www.linkedin.com/in/nicoleohanian/) [Github](https://github.com/nohani) [Portfolio](https://nicoleohanian.com/)
+
 ## Technologies
 * React
 * Redux
