@@ -2,8 +2,26 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 class DiscoverItem extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleRedirect = this.handleRedirect.bind(this);
+  }
+
+  handleRedirect() {
+    if (!this.props.id) {
+      this.props.openModal("login");
+    }
+  }
+
   render() {
     const { venue, artists, name, eventDate } = this.props.event;
+
+    let link;
+    if (this.props.id) {
+      link = `/events/${this.props.event._id}`;
+    } else {
+      link = `/`;
+    }
     const date = new Date(eventDate).toDateString();
     // const artist = artists[0];
     let artist;
@@ -12,11 +30,8 @@ class DiscoverItem extends React.Component {
       return (
         <div className="discover-item-wrapper">
           <div className="">
-            <div className="show-card">
-              <Link
-                to={`/events/${this.props.event._id}`}
-                className="show-thumbnail"
-              >
+            <div className="show-card" onClick={this.handleRedirect}>
+              <Link to={link} className="show-thumbnail">
                 <div
                   className="venue-thumb-height"
                   style={{ backgroundImage: `url(${venue.img})` }}
