@@ -6,6 +6,7 @@ import {
   fetchUserVenues,
   fetchUserFavorites,
 } from "../../actions/user_actions";
+import { openModal } from "../../actions/modal_actions";
 
 const mSTP = (state) => {
   return {
@@ -22,6 +23,7 @@ const mDTP = (dispatch) => ({
   fetchUserArtists: (userId) => dispatch(fetchUserArtists(userId)),
   fetchUserVenues: (userId) => dispatch(fetchUserVenues(userId)),
   fetchUserFavorites: (userId) => dispatch(fetchUserFavorites(userId)),
+  openModal: (field) => dispatch(openModal(field)),
 });
 
 export default connect(mSTP, mDTP)(Discover);

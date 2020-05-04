@@ -47,7 +47,14 @@ export default class Discover extends React.Component {
     let events = null;
     if (this.props.events) {
       events = this.props.events.data.map((event) => {
-        return <DiscoverItem key={event.name} event={event} />;
+        return (
+          <DiscoverItem
+            key={event.name}
+            event={event}
+            id={this.props.id}
+            openModal={this.props.openModal}
+          />
+        );
       });
     }
 
