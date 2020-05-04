@@ -10,11 +10,11 @@ export default class Discover extends React.Component {
   }
 
   componentDidMount() {
-    const { id } = this.props.user;
+    const id = this.props.id;
+    this.props.fetchUserFavorites(id);
     this.props.fetchEvents().then();
     this.props.fetchUserArtists(id);
     this.props.fetchUserVenues(id);
-    this.agg = this.aggregateEvents();
   }
 
   aggregateEvents() {
@@ -23,7 +23,6 @@ export default class Discover extends React.Component {
     let venues = null;
     let userEvents = {};
     if (this.props.events && this.props.venues && this.props.artists) {
-      console.log("inside this thing");
       artists = this.props.artists.data.map((artist) => {
         return artist._id;
       });
@@ -61,16 +60,6 @@ export default class Discover extends React.Component {
         <DiscoverItem key={event._id} event={event} />
       ));
     }
-    // const userE = this.aggregateEvents();
-    // if (userE) {
-    //   const events = Object.values(userE);
-    //   const discoverEvents = events.map((event) => {
-    //     return <DiscoverItem key={event._id} event={event} />;
-    //   });
-    //   return discoverEvents;
-    // } else {
-    //   return null;
-    // }
   }
 
   render() {

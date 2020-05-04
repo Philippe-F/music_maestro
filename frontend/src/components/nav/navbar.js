@@ -47,7 +47,7 @@ class NavBar extends React.Component {
       const favItems = this.props.userFavorites.map((fav) => {
         const date = new Date(fav.eventDate).toDateString();
         return (
-          <Link to={`/events/${fav._id}`}>
+          <Link key={fav._id} to={`/events/${fav._id}`}>
             <div className="user-dropdown-item">
               <h3 className="user-dropdown-title">{fav.name}</h3>
               <p className="user-dropdown-description">{date}</p>
