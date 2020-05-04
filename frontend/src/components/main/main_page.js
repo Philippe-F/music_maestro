@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { openModal } from "../../actions/modal_actions";
+import Discover from "../discover/discover_container";
 import Map from "../search/map";
 
 class MainPage extends React.Component {
@@ -26,6 +27,7 @@ class MainPage extends React.Component {
 
           {/* <Map />  */}
         </div>
+        <Discover />
       </div>
     );
   }
