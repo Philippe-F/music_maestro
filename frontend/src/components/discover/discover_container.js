@@ -12,7 +12,7 @@ const mSTP = (state) => {
   return {
     events: state.user.events,
     user: state.user,
-    id: state.session.user.id,
+    id: state.session.user ? state.session.user.id : null,
     artists: state.user.userArtists,
     venues: state.user.userVenues,
   };
