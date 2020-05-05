@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import UserConcertItem from "./user_concert_item";
 import ErrorItem from "./error_item";
 // import { DataPipeline } from "aws-sdk";
@@ -38,6 +38,7 @@ class NavBar extends React.Component {
   logoutUser(e) {
     e.preventDefault();
     this.props.logout();
+    this.props.openModal("login");
     this.openUserModal();
   }
 
@@ -47,7 +48,7 @@ class NavBar extends React.Component {
       const favItems = this.props.userFavorites.map((fav) => {
         const date = new Date(fav.eventDate).toDateString();
         return (
-          <Link to={`/events/${fav._id}`}>
+          <Link key={fav._id} to={`/events/${fav._id}`}>
             <div className="user-dropdown-item">
               <h3 className="user-dropdown-title">{fav.name}</h3>
               <p className="user-dropdown-description">{date}</p>
@@ -189,7 +190,8 @@ class NavBar extends React.Component {
     }
   }
 
-  handleSearch() {
+  handleSearch(e) {
+    e.preventDefault();
     this.props.searchConcerts(this.state.search);
   }
 
@@ -231,7 +233,7 @@ class NavBar extends React.Component {
               <div className="search-content">
                 <div className="search-input-wrapper">
                   {/* SEARCH BAR FORM */}
-                  <form onSubmit={this.handleSearch}>
+                  <form onSubmit={(e) => this.handleSearch(e)}>
                     <input
                       type="text"
                       placeholder="Search..."
@@ -256,7 +258,6 @@ class NavBar extends React.Component {
   }
 
   render() {
-    console.log("inside render");
     return (
       <div className="nav">
         <div className="nav-content">

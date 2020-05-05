@@ -7,14 +7,16 @@ export default class Discover extends React.Component {
     this.aggregateEvents = this.aggregateEvents.bind(this);
     this.userEvents = this.userEvents.bind(this);
     this.allEvents = this.allEvents.bind(this);
+    this.createdBy = this.createdBy.bind(this);
   }
 
   componentDidMount() {
-    const { id } = this.props.user;
+    const id = this.props.id;
+    this.props.fetchUserFavorites(id);
     this.props.fetchEvents().then();
     this.props.fetchUserArtists(id);
     this.props.fetchUserVenues(id);
-    this.agg = this.aggregateEvents();
+    console.log(this.props);
   }
 
   aggregateEvents() {
@@ -23,7 +25,6 @@ export default class Discover extends React.Component {
     let venues = null;
     let userEvents = {};
     if (this.props.events && this.props.venues && this.props.artists) {
-      console.log("inside this thing");
       artists = this.props.artists.data.map((artist) => {
         return artist._id;
       });
@@ -47,7 +48,14 @@ export default class Discover extends React.Component {
     let events = null;
     if (this.props.events) {
       events = this.props.events.data.map((event) => {
-        return <DiscoverItem key={event.name} event={event} />;
+        return (
+          <DiscoverItem
+            key={event.name}
+            event={event}
+            id={this.props.id}
+            openModal={this.props.openModal}
+          />
+        );
       });
     }
 
@@ -58,19 +66,81 @@ export default class Discover extends React.Component {
     const { userFavorites } = this.props.user;
     if (userFavorites) {
       return userFavorites.map((event) => (
-        <DiscoverItem key={event._id} event={event} />
+        <DiscoverItem
+          key={event._id}
+          event={event}
+          id={this.props.id}
+          openModal={this.props.openModal}
+        />
       ));
     }
-    // const userE = this.aggregateEvents();
-    // if (userE) {
-    //   const events = Object.values(userE);
-    //   const discoverEvents = events.map((event) => {
-    //     return <DiscoverItem key={event._id} event={event} />;
-    //   });
-    //   return discoverEvents;
-    // } else {
-    //   return null;
-    // }
+  }
+
+  createdBy() {
+    return (
+      <div className="createdBy">
+        <div className="creator-container">
+          <div className="creators">JACOB MEYER</div>
+          <div className="creator-links">
+            <a href="https://www.linkedin.com/in/jacob-p-meyer/">
+              <i id="splash-icon" className="fab fa-linkedin"></i>
+            </a>
+            <a href={`https://github.com/jacobpmeyer/`}>
+              <i id="splash-icon" className="fab fa-github"></i>
+            </a>
+            <a href={`https://jacobmeyer.dev`}>
+              <i id="splash-icon" className="fas fa-portrait"></i>
+            </a>
+          </div>
+        </div>
+        <div className="creator-container">
+          <div className="creators">PHILIPPE FONZIN</div>
+          <div className="creator-links">
+            <a href="https://www.linkedin.com/in/philippe-fonzin-805701b7/">
+              <i id="splash-icon" className="fab fa-linkedin"></i>
+            </a>
+            <a href={`https://github.com/Philippe-F`}>
+              <i id="splash-icon" className="fab fa-github"></i>
+            </a>
+            <a href={`https://philippefonzin.dev/`}>
+              <i id="splash-icon" className="fas fa-portrait"></i>
+            </a>
+          </div>
+        </div>
+        <div className="creator-container">
+          <div className="creators">NICOLE OHANIAN</div>
+          <div className="creator-links">
+            <a href="https://www.linkedin.com/in/nicoleohanian/">
+              <i id="splash-icon" className="fab fa-linkedin"></i>
+            </a>
+            <a href={`https://github.com/nohani`}>
+              <i id="splash-icon" className="fab fa-github"></i>
+            </a>
+            <a href={`https://nicoleohanian.com/`}>
+              <i id="splash-icon" className="fas fa-portrait"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  justForYou() {
+    if (this.props.id) {
+      return (
+        <>
+          <h1 className="discover-header">JUST FOR YOU</h1>
+          <div className="discover-collection">{this.userEvents()}</div>
+        </>
+      );
+    } else {
+      return (
+        <>
+          <h1 className="discover-header">Created by</h1>
+          {this.createdBy()}
+        </>
+      );
+    }
   }
 
   render() {
@@ -78,8 +148,7 @@ export default class Discover extends React.Component {
       <div className="responsive">
         <div className="discover-wrapper">
           <div className="discover">
-            <h1 className="discover-header">JUST FOR YOU</h1>
-            <div className="discover-collection">{this.userEvents()}</div>
+            {this.justForYou()}
             <h1 className="discover-header">HAPPENING SOON</h1>
             <div className="discover-collection">{this.allEvents()}</div>
           </div>
