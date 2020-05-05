@@ -12,13 +12,8 @@ import VenueContainer from "./main/venue_container";
 import EventContainer from "./event/event_show_container";
 import Modal from "./modal/modal";
 import Errors from "./errors";
-import "../stylesheets/main.scss";
 import "../stylesheets/reset.css";
-import "../stylesheets/nav.scss";
-import "../stylesheets/artist.scss";
-import "../stylesheets/venue.scss";
-import "../stylesheets/errors.scss";
-import "../stylesheets/discover.scss";
+import "../stylesheets/application.scss";
 
 const App = () => (
   <div>
