@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import UserConcertItem from "./user_concert_item";
 import ErrorItem from "./error_item";
 // import { DataPipeline } from "aws-sdk";
@@ -38,6 +38,7 @@ class NavBar extends React.Component {
   logoutUser(e) {
     e.preventDefault();
     this.props.logout();
+    this.props.openModal("login");
     this.openUserModal();
   }
 
