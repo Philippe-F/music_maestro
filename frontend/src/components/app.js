@@ -12,8 +12,8 @@ import ArtistContainer from "./artist/artist_container";
 import EventContainer from "./main/event_container";
 // import ArtistContainer from "./main/artist_container";
 // import EventContainer from "./event/event_show_container";
-import Modal from './modal/modal'
-import Errors from './errors'
+import Modal from './modal/modal';
+import Errors from './errors';
 import "../stylesheets/main.scss";
 import '../stylesheets/reset.css';
 import "../stylesheets/nav.scss";
@@ -35,6 +35,7 @@ const App = () => (
       <ProtectedRoute path="/my_favorites" component={FavoriteContainer} />
       <ProtectedRoute path="/my_venues" component={VenueContainer} />
       <Route path="/events/:eventId" component={EventContainer} />
+      <Route path="/artists/:artistId" component={ArtistContainer} />
       {/* <ProtectedRoute path="/my_artists" component={ArtistContainer} /> */}
       {/* <Route path="/artists" component={ArtistContainer} /> */}
       <Redirect to="/" /> 

@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // window.store = store
   // window.dispatch = store.dispatch
-  // window.getState = store.getState
+  window.getState = store.getState
   // window.axios = axios
   // window.fetchUserFavorites = fetchUserFavorites
   // window.favoriteEvent = favoriteEvent
