@@ -16,7 +16,6 @@ export default class Discover extends React.Component {
     this.props.fetchEvents().then();
     this.props.fetchUserArtists(id);
     this.props.fetchUserVenues(id);
-    console.log(this.props);
   }
 
   aggregateEvents() {

@@ -1,7 +1,6 @@
-import React from 'react'
-import DiscoverItem from '../discover/discover_item'
+import React from "react";
+import DiscoverItem from "../discover/discover_item";
 class Venue extends React.Component {
-
   render() {
     return (
       <div className="responsive">
@@ -13,9 +12,7 @@ class Venue extends React.Component {
                 venue poster
               </div>
               <div className="text-wrapper">
-                <div className="venue-info">
-                  venue Name
-                </div>
+                <div className="venue-info">venue Name</div>
                 <div className="action-buttons">
                   <button className="form-button action-button">
                     <div className="img-wrapper">
@@ -36,8 +33,8 @@ class Venue extends React.Component {
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
 
-export default Venue
+export default Venue;
