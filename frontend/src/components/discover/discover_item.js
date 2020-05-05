@@ -8,9 +8,9 @@ class DiscoverItem extends React.Component {
   }
 
   handleRedirect() {
-    if (!this.props.id) {
-      this.props.openModal("login");
-    }
+    // if (!this.props.id) {
+    //   this.props.openModal("login");
+    // }
   }
 
   render() {
@@ -31,7 +31,10 @@ class DiscoverItem extends React.Component {
         <div className="discover-item-wrapper">
           <div className="">
             <div className="show-card" onClick={this.handleRedirect}>
-              <Link to={link} className="show-thumbnail">
+              <Link
+                to={`/events/${this.props.event._id}`}
+                className="show-thumbnail"
+              >
                 <div
                   className="venue-thumb-height"
                   style={{ backgroundImage: `url(${venue.img})` }}
