@@ -43,11 +43,20 @@
 
 .description{
   text-align: center;
-  font-size: 14px;
+  font-size: 1rem;
   color: #fff;
   padding: 0 20px;
   margin-top: 20px;
   margin-bottom: 50px;
+}
+
+.splash-img-container {
+  display: flex;
+  justify-content: center;
+}
+
+.splash-img {
+  max-width: 900px;
 }
 
 .inside {
