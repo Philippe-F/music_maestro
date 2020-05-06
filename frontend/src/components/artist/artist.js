@@ -60,7 +60,7 @@ class Artist extends React.Component {
     }
   }
 
-  handleFavorite() {
+  handleFollow() {
     const userId = this.props.currentUser.id;
     const artistId = this.getArtistId();
     const favIds = this.props.favorites.map((fav) => {
