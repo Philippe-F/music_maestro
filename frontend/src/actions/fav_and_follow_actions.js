@@ -27,11 +27,17 @@ export const followVenue = (userId, venueId) => dispatch => FollowAPIUtil.follow
 export const unfollowVenue = (userId, venueId) => dispatch => FollowAPIUtil.unfollowVenue(userId, venueId)
   .then((user) => dispatch(receiveUser(user)));
 
-export const followArtist = (userId, artistId) => dispatch => FollowAPIUtil.followArtist(userId, artistId)
-  .then((user) => dispatch(receiveUser(user)));
+// export const followArtist = (userId, artistId) => dispatch => FollowAPIUtil.followArtist(userId, artistId)
+//   .then((user) => dispatch(receiveUser(user)));
+
+// export const unfollowArtist = (userId, artistId) => dispatch => FollowAPIUtil.unfollowArtist(userId, artistId)
+//   .then((user) => dispatch(receiveUser(user)));
 
 export const unfollowArtist = (userId, artistId) => dispatch => FollowAPIUtil.unfollowArtist(userId, artistId)
-  .then((user) => dispatch(receiveUser(user)));
+  .then((user => dispatch(updateUserFollows(user))));
+
+export const followArtist = (userId, artistId) => dispatch => FollowAPIUtil.followArtist(userId, artistId)
+  .then((user => dispatch(updateUserFollows(user))));
 
 ////////////////////////
 
@@ -40,11 +46,4 @@ export const favoriteEvent = (userId, eventId) => dispatch => FavAPIUtil.favorit
 
  export const unfavoriteEvent = (userId, eventId) => dispatch => FavAPIUtil.unfavoriteEvent(userId, eventId)
   .then((user => dispatch(updateUserFavorites(user))));
-
-  export const unfollowArtist = (userId, artistId) => dispatch => FollowAPIUtil.unfollowArtist(userId, artistId)
-  .then((user => dispatch(updateUserFollows(user))));
-
-  export const followArtist = (userId, artistId) => dispatch => FollowAPIUtil.followArtist(userId, artistId)
-  .then((user => dispatch(updateUserFollows(user))));
-
 
