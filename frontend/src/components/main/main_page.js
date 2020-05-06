@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { openModal } from "../../actions/modal_actions";
 import Discover from "../discover/discover_container";
 import Map from "../search/map";
+import { Link } from "react-router-dom";
 
 class MainPage extends React.Component {
   render() {
@@ -41,6 +42,11 @@ class MainPage extends React.Component {
           >
             <button>Sign In</button>
           </div>
+          <p className="description">
+            <Link to={`/about`} className="about-link">
+              <button className="about-text">About the creators</button>
+            </Link>
+          </p>
 
           {/* <Map />  */}
         </div>
