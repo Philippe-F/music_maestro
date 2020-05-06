@@ -99,7 +99,6 @@ class Event extends React.Component {
   }
 
   render() {
-    console.log(this.props);
     const id = this.props.currentUser ? this.props.currentUser.id : null;
     const { event } = this.props;
     if (!this.props.event) {

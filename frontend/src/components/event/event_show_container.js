@@ -8,7 +8,6 @@ import {
 import { openModal } from "../../actions/modal_actions";
 
 const mSTP = (state, ownProps) => {
-  console.log(state.events);
   let eventProp = null;
   if (state.events.data) {
     state.events.data.forEach((e) => {

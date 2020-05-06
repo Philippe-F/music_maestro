@@ -14,6 +14,7 @@ import Modal from "./modal/modal";
 import Errors from "./errors";
 import "../stylesheets/reset.css";
 import "../stylesheets/application.scss";
+import AboutPage from "./about/About_page";
 
 const App = () => (
   <div>
@@ -30,6 +31,7 @@ const App = () => (
       <Route path="/events/:eventId" component={EventContainer} />
       {/* <ProtectedRoute path="/my_artists" component={ArtistContainer} /> */}
       {/* <Route path="/artists" component={ArtistContainer} /> */}
+      <Route path="/about" component={AboutPage} />
       <Redirect to="/" />
     </Switch>
   </div>
