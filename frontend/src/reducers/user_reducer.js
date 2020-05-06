@@ -38,7 +38,7 @@ import {
         // } else {
           return Object.assign({}, newState, { userFavorites: action.data.data.favorites.events })
         // }
-      case UPDATE_USER_FAVORITES: 
+      case UPDATE_USER_FOLLOWS: 
           return Object.assign({}, newState, { userFollows: action.data.data.follows.artist })
         // }
       default:
