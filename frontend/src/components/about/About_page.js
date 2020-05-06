@@ -15,12 +15,10 @@ const AboutPage = (props) => {
           </div>
           <div className="creators">JACOB MEYER</div>
           <div className="creator-links">
-            <div className="creator-img-container">
-              <a href="https://www.linkedin.com/in/jacob-p-meyer/">
-                LinkedIn
-                <i id="splash-icon" className="fab fa-linkedin"></i>
-              </a>
-            </div>
+            <a href="https://www.linkedin.com/in/jacob-p-meyer/">
+              LinkedIn
+              <i id="splash-icon" className="fab fa-linkedin"></i>
+            </a>
             <a href={`https://github.com/jacobpmeyer/`}>
               Github
               <i id="splash-icon" className="fab fa-github"></i>
@@ -56,11 +54,13 @@ const AboutPage = (props) => {
           </div>
         </div>
         <div className="creator-container">
-          <img
-            className="creator-img"
-            src="https://musicmaestro-seed.s3.us-east-2.amazonaws.com/nicole.png"
-            alt="nicole"
-          />
+          <div className="creator-img-container">
+            <img
+              className="creator-img"
+              src="https://musicmaestro-seed.s3.us-east-2.amazonaws.com/nicole.png"
+              alt="nicole"
+            />
+          </div>
           <div className="creators">NICOLE OHANIAN</div>
           <div className="creator-links">
             <a href="https://www.linkedin.com/in/nicoleohanian/">
