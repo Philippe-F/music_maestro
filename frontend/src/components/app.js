@@ -9,7 +9,7 @@ import SignupFormContainer from "./session/signup_form_container";
 import FavoriteContainer from "./main/favorite_container";
 import VenueContainer from "./main/venue_container";
 import ArtistContainer from "./artist/artist_container";
-import EventContainer from "./main/event_container";
+// import EventContainer from "./main/event_container";
 // import ArtistContainer from "./main/artist_container";
 import EventContainer from "./event/event_show_container";
 import Modal from "./modal/modal";
