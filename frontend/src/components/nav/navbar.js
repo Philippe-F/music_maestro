@@ -4,6 +4,21 @@ import UserConcertItem from "./user_concert_item";
 import ErrorItem from "./error_item";
 // import { DataPipeline } from "aws-sdk";
 import About from "../about/About";
+// import myDebounce from '../../myDebounce';
+
+Function.prototype.myDebounce = function (interval) {
+  let timeout;
+
+  return (...args) => {
+    const fnCall = () => {
+      timeout = null;
+      this(...args);
+    }
+
+    clearTimeout(timeout);
+    timeout = setTimeout(fnCall, interval)
+  }
+}
 
 class NavBar extends React.Component {
   constructor(props) {
@@ -23,6 +38,8 @@ class NavBar extends React.Component {
     this.searchClick = this.searchClick.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
     this.clearSearch = this.clearSearch.bind(this);
+    this.searchConcerts = this.props.searchConcerts.myDebounce(500);
+ 
   }
 
   componentDidMount() {
@@ -129,6 +146,12 @@ class NavBar extends React.Component {
         </div>
       );
     }
+  }
+
+  updateDebouncedSearch(e){
+      this.setState({ search: e.currentTarget.value }, () => {
+      this.searchConcerts(this.state.search);
+      });
   }
 
   updateSearch() {
@@ -239,7 +262,7 @@ class NavBar extends React.Component {
                       placeholder="Search..."
                       className="search-input"
                       value={this.state.search}
-                      onChange={this.updateSearch()}
+                      onChange={(e) => this.updateDebouncedSearch(e)}
                     ></input>
                     <button className="search-button">
                       <i className="fas fa-search search-icon"></i>
