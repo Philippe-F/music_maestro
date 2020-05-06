@@ -60,39 +60,39 @@ class Artist extends React.Component {
     }
   }
 
-  handleFollow() {
-    const userId = this.props.currentUser.id;
-    const artistId = this.getArtistId();
-    const favIds = this.props.favorites.map((fav) => {
-      //there is no follows action
-      return fav._id;
-    });
-    if (this.props.favorites.includes(artistId) || favIds.includes(artistId)) {
-      this.props.unfollowArtist(userId, artistId);
-    } else {
-      this.props.followArtist(userId, artistId);
-    }
-  }
+  // handleFollow() {
+  //   const userId = this.props.currentUser.id;
+  //   const artistId = this.getArtistId();
+  //   const favIds = this.props.favorites.map((fav) => {
+  //     //there is no follows action
+  //     return fav._id;
+  //   });
+  //   if (this.props.favorites.includes(artistId) || favIds.includes(artistId)) {
+  //     this.props.unfollowArtist(userId, artistId);
+  //   } else {
+  //     this.props.followArtist(userId, artistId);
+  //   }
+  // }
 
-  star() {
-    const eventId = this.props.event._id;
-    const favIds = this.props.favorites.map((fav) => {
-      return fav._id;
-    });
-    if (this.props.favorites.includes(eventId) || favIds.includes(eventId)) {
-      return (
-        <div className="img-wrapper">
-          <i className="fas fa-star" id="artist-star"></i>
-        </div>
-      );
-    } else {
-      return (
-        <div className="img-wrapper">
-          <i className="far fa-star" id="artist-star"></i>
-        </div>
-      );
-    }
-  }
+  // star() {
+  //   const eventId = this.props.event._id;
+  //   const favIds = this.props.favorites.map((fav) => {
+  //     return fav._id;
+  //   });
+  //   if (this.props.favorites.includes(eventId) || favIds.includes(eventId)) {
+  //     return (
+  //       <div className="img-wrapper">
+  //         <i className="fas fa-star" id="artist-star"></i>
+  //       </div>
+  //     );
+  //   } else {
+  //     return (
+  //       <div className="img-wrapper">
+  //         <i className="far fa-star" id="artist-star"></i>
+  //       </div>
+  //     );
+  //   }
+  // }
 
   render() {
     const name = this.getArtistName();
@@ -107,7 +107,7 @@ class Artist extends React.Component {
                 <div className="artist-metadata">
                   <div className="artist-poster">
                     {/* image tag goes here className="artist-image" */}
-                    <img src={image} />
+                    <img className="artist-image" src={image} />
                   </div>
                   <div className="text-wrapper">
                     <div className="artist-info">
@@ -118,7 +118,7 @@ class Artist extends React.Component {
                         <div className="img-wrapper">
                           <i class="far fa-star" id="artist-star"></i>
                         </div>
-                        <span>Favorite</span>
+                        <span>Follow</span>
                       </button>
                     </div>
                   </div>
