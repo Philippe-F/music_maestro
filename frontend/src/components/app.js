@@ -14,13 +14,9 @@ import EventContainer from "./main/event_container";
 import EventContainer from "./event/event_show_container";
 import Modal from "./modal/modal";
 import Errors from "./errors";
-import "../stylesheets/main.scss";
 import "../stylesheets/reset.css";
-import "../stylesheets/nav.scss";
-import "../stylesheets/artist.scss";
-import "../stylesheets/venue.scss";
-import "../stylesheets/errors.scss";
-import "../stylesheets/discover.scss";
+import "../stylesheets/application.scss";
+import AboutPage from "./about/About_page";
 
 const App = () => (
   <div>
@@ -37,6 +33,7 @@ const App = () => (
       <Route path="/events/:eventId" component={EventContainer} />
       {/* <ProtectedRoute path="/my_artists" component={ArtistContainer} /> */}
       {/* <Route path="/artists" component={ArtistContainer} /> */}
+      <Route path="/about" component={AboutPage} />
       <Redirect to="/" />
     </Switch>
   </div>

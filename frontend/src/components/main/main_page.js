@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { openModal } from "../../actions/modal_actions";
 import Discover from "../discover/discover_container";
 import Map from "../search/map";
+import { Link } from "react-router-dom";
 
 class MainPage extends React.Component {
   render() {
@@ -18,12 +19,34 @@ class MainPage extends React.Component {
             See the most excting shows by today's most creative artists. Sign up
             to discover new music and shows.
           </p>
+          <div className="splash-img-container">
+            <img
+              className="splash-img"
+              src="https://musicmaestro-seed.s3.us-east-2.amazonaws.com/outdoor.jpg"
+              alt=""
+            />
+          </div>
+          <p className="description lg">
+            Wanna see the stuff happening soon? Scroll down.
+            <br />
+            Looking for something in particular? Click on the magnifying glass
+            to search for shows and concerts by artist name, venue, or tour
+            name.
+            <br />
+            See something you like and don't want to forget it? Click on an
+            event, then click the favorite button.
+          </p>
           <div
             className="splash-pg-button"
             onClick={() => this.props.openModal("login")}
           >
             <button>Sign In</button>
           </div>
+          <p className="description">
+            <Link to={`/about`} className="about-link">
+              <button className="about-text">About the creators</button>
+            </Link>
+          </p>
 
           {/* <Map />  */}
         </div>
