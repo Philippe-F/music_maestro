@@ -12,7 +12,9 @@
 }
 
 .creator-img-container {
-  
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .creator-img {
@@ -35,6 +37,7 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
+  margin-bottom: 2rem;
 }
 
 .creators {
@@ -72,8 +75,9 @@
 
 @media only screen and (max-width: 650px) {
   .createdBy {
-    display: inline-block;
+    display: flex;
     justify-content: space-evenly;
+    flex-direction: column;
   }
 
   .creator-container {
@@ -107,7 +111,7 @@
 
   #splash-icon {
     font-size: 2rem;
-    margin: 1rem .5rem;
+    margin: .5rem .5rem;
   }
 
   .discover-header {
