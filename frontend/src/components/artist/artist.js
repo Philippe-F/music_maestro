@@ -161,7 +161,6 @@ class Artist extends React.Component {
           <div className="discover">
             <div className="artist-metadata">
               <div className="artist-poster">
-                {/* image tag goes here className="artist-image" */}
                 <img className="artist-image" src={image} />
               </div>
               <div className="text-wrapper">
