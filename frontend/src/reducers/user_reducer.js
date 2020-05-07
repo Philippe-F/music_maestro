@@ -6,6 +6,7 @@ import {
   RECEIVE_USER_EVENTS,
   RECEIVE_USER_FAVORITES,
   RECEIVE_USER_FOLLOWS } from "../actions/user_actions";
+  
 import { 
   RECEIVE_USER, 
   UPDATE_USER_FAVORITES,
@@ -30,10 +31,8 @@ import {
         return Object.assign({}, newState, { userArtists: action.data});
       case RECEIVE_USER_FAVORITES:
         return Object.assign({}, newState, { userFavorites: action.data.data});
-        //////////////
       case RECEIVE_USER_FOLLOWS:
         return Object.assign({}, newState, { userFollows: action.data.data});
-        /////////////
       case RECEIVE_USER_EVENTS: 
         return Object.assign({}, newState, { userEvents: action.events})
       case UPDATE_USER_FAVORITES: 

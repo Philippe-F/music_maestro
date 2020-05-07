@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // window.store = store
   // window.dispatch = store.dispatch
-  window.getState = store.getState
+  // window.getState = store.getState
   // window.axios = axios
   // window.fetchUserFavorites = fetchUserFavorites
   // window.favoriteEvent = favoriteEvent
@@ -61,7 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // window.unfollowArtist = unfollowArtist;
   // window.favoriteEvent = favoriteEvent;
   // window.unfavoriteEvent = unfavoriteEvent;
-  window.store = store;
+  // window.store = store;
 
   ReactDOM.render(<Root store={store} />, root);
 });

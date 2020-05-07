@@ -6,6 +6,7 @@ import usersReducer from "./user_reducer";
 import uiReducer from './ui_reducer';
 
 // import ui from './ui_reducer'
+import ui from './ui_reducer'
 import entitiesReducer from "./entities_reducer";
 
 import events from './events_reducer'
@@ -17,6 +18,7 @@ const RootReducer = combineReducers({
   user: usersReducer,
   ui: uiReducer,
   entities: entitiesReducer, 
+  ui,
   events
 
 });
