@@ -4,8 +4,12 @@ import {
   RECEIVE_USER_ARTISTS,
   RECEIVE_USER_ARTIST,
   RECEIVE_USER_EVENTS,
-  RECEIVE_USER_FAVORITES } from "../actions/user_actions";
-import { RECEIVE_USER, UPDATE_USER_FAVORITES } from '../actions/fav_and_follow_actions';
+  RECEIVE_USER_FAVORITES,
+  RECEIVE_USER_FOLLOWS } from "../actions/user_actions";
+import { 
+  RECEIVE_USER, 
+  UPDATE_USER_FAVORITES,
+  UPDATE_USER_FOLLOWS } from '../actions/fav_and_follow_actions';
 
 
 
@@ -26,6 +30,10 @@ import { RECEIVE_USER, UPDATE_USER_FAVORITES } from '../actions/fav_and_follow_a
         return Object.assign({}, newState, { userArtists: action.data});
       case RECEIVE_USER_FAVORITES:
         return Object.assign({}, newState, { userFavorites: action.data.data});
+        //////////////
+      case RECEIVE_USER_FOLLOWS:
+        return Object.assign({}, newState, { userFollows: action.data.data});
+        /////////////
       case RECEIVE_USER_EVENTS: 
         return Object.assign({}, newState, { userEvents: action.events})
       case UPDATE_USER_FAVORITES: 
@@ -34,6 +42,9 @@ import { RECEIVE_USER, UPDATE_USER_FAVORITES } from '../actions/fav_and_follow_a
         //   return newState
         // } else {
           return Object.assign({}, newState, { userFavorites: action.data.data.favorites.events })
+        // }
+      case UPDATE_USER_FOLLOWS: 
+          return Object.assign({}, newState, { userFollows: action.data.data.follows.artist })
         // }
       default:
         return state;

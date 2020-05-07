@@ -168,18 +168,54 @@ router.get("/:user_id/events", async (req, res) => {
 
 ///////////////FOLLOWS////////////////
 
+// router.post("/:user_id/events/:event_id/favorite", async (req, res) => {
+//   const event = await Event.findById(req.params.event_id);
+//   let user = await User.findById(req.params.user_id);
+//   user.favorites.events.push(event._id);
+//   user = await user.save();
+
+//   user = await User.findById(req.params.user_id)
+//     .populate({
+//       path: "favorites.events",
+//       populate: {
+//         path: "artists",
+//         model: "Artist",
+//       },
+//     })
+//     .populate({
+//       path: "favorites.events",
+//       populate: {
+//         path: "venue",
+//         model: "Venue",
+//       },
+//     });
+
+//   res.json(user);
+// });
+
 router.post("/:user_id/artists/:artist_id/follow", async (req, res) => {
   const artist = await Artist.findById(req.params.artist_id);
   let user = await User.findById(req.params.user_id);
   user.follows.artists.push(artist._id);
   user = await user.save();
+
+  user = await User.findById(req.params.user_id)
+    .populate({
+      path: "follows.artists",
+      populate: {
+        path: "artists",
+        model: "Artist",
+      },
+    }) 
+  
   res.json(user);
 });
 
 router.delete("/:user_id/artists/:artist_id/follow", async (req, res) => {
   let user = await User.findById(req.params.user_id);
-  const index = user.follows.artists.indexOf(req.params.artist_id);
-  delete user.follows.artists[index];
+  // const index = user.follows.artists.indexOf(req.params.artist_id);
+  // delete user.follows.artists[index];
+  user.follows.artists.remove(req.params.artist_id);
   user = await user.save();
   res.json(user);
 });

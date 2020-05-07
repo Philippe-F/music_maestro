@@ -8,6 +8,12 @@ export const receiveUserFavorites = userId => {
   return axios.get(`/api/users/${userId}/my_favorites`);
 };
 
+/////////////////
+export const receiveUserFollows = userId => {
+  return axios.get(`/api/users/${userId}/my_artists`);
+};
+////////////////
+
 export const receiveUserArtists = userId => {
   return axios.get(`/api/users/${userId}/my_artists`);
 };

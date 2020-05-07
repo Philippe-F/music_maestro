@@ -1,13 +1,27 @@
 import React from 'react';
+// import DiscoverItem from "../discover/discover_item";
 
 class Artist extends React.Component {
   constructor(props) {
     super(props);
-    this.artistName = this.getArtist.bind(this);
+    this.flag = null; 
   }
 
   componentDidMount() {
     this.props.fetchEvents();
+    if (this.props.currentUser) {
+      this.props.fetchUserFollows(this.props.currentUser.id);
+    }
+    this.setState({
+      follows: this.props.follows,
+    });
+  }
+
+  componentDidUpdate() {
+    if (this.flag === true) {
+      this.props.fetchUserFollows(this.props.currentUser.id);
+      this.flag = null;
+    }
   }
 
   getArtist() {
@@ -63,76 +77,107 @@ class Artist extends React.Component {
   handleFollow() {
     const userId = this.props.currentUser.id;
     const artistId = this.getArtistId();
-    const favIds = this.props.favorites.map((fav) => {
-      //there is no follows action
-      return fav._id;
+    const followIds = this.props.follows.map((artist) => {
+
+      return artist._id;
     });
-    if (this.props.favorites.includes(artistId) || favIds.includes(artistId)) {
+    if (this.props.follows.includes(artistId) || followIds.includes(artistId)) {
       this.props.unfollowArtist(userId, artistId);
+      this.flag = true;
     } else {
       this.props.followArtist(userId, artistId);
+      this.flag = true;
     }
   }
 
-  star() {
-    const eventId = this.props.event._id;
-    const favIds = this.props.favorites.map((fav) => {
-      return fav._id;
+  follow() {
+    if (!this.props.follows) return;
+    const artistId = this.getArtistId();
+    const followIds = this.props.follows.map((artist) => {
+      return artist._id;
     });
-    if (this.props.favorites.includes(eventId) || favIds.includes(eventId)) {
+    if (this.props.follows.includes(artistId) || followIds.includes(artistId)) {
       return (
-        <div className="img-wrapper">
-          <i className="fas fa-star" id="artist-star"></i>
+        <div className="action-buttons">
+          <button
+            onClick={() => this.handleFollow()}
+            className="form-button action-button"
+          >
+            <div className="img-wrapper">
+              <i className="fas fa-star" id="artist-star"></i>
+            </div>
+            <span>Unfollow</span>
+          </button>
         </div>
       );
     } else {
       return (
-        <div className="img-wrapper">
-          <i className="far fa-star" id="artist-star"></i>
+        <div className="action-buttons">
+          <button
+            onClick={() => this.handleFollow()}
+            id="action-button-grey"
+            className="form-button action-button"
+          >
+            <div className="img-wrapper">
+              <i className="far fa-star" id="artist-star"></i>
+            </div>
+            <span>Follow</span>
+          </button>
         </div>
       );
+    }
+  }
+
+  signIn() {
+    return (
+      <div className="action-buttons">
+        <button
+          onClick={() => this.props.openModal("login")}
+          className="form-button action-button"
+        >
+          <div className="img-wrapper"></div>
+          <span>Sign In to follow</span>
+        </button>
+      </div>
+    );
+  }
+
+  followOrLogin() {
+    if (this.props.currentUser && this.props.currentUser.id) {
+      return this.follow();
+    } else {
+      return this.signIn();
     }
   }
 
   render() {
     const name = this.getArtistName();
-    const id= this.getArtistId();
+    const id = this.getArtistId();
     const image= this.getArtistImage();
 
-    console.log("names", image)
     return (
-          <div className="responsive">
-            <div className="discover-wrapper">
-              <div className="discover">
-                <div className="artist-metadata">
-                  <div className="artist-poster">
-                    {/* image tag goes here className="artist-image" */}
-                    <img src={image} />
-                  </div>
-                  <div className="text-wrapper">
-                    <div className="artist-info">
-                      <h2>{name}</h2>
-                    </div>
-                    <div className="action-buttons">
-                      <button className="form-button action-button">
-                        <div className="img-wrapper">
-                          <i class="far fa-star" id="artist-star"></i>
-                        </div>
-                        <span>Favorite</span>
-                      </button>
-                    </div>
-                  </div>
+      <div className="responsive">
+        <div className="discover-wrapper">
+          <div className="discover">
+            <div className="artist-metadata">
+              <div className="artist-poster">
+                <img className="artist-image" src={image} />
+              </div>
+              <div className="text-wrapper">
+                <div className="artist-info">
+                  <h1>{name}</h1>
                 </div>
-                <h1 className="discover-header">Upcoming Shows</h1>
-                <div className="discover-collection">
-                  {/* <DiscoverItem />
-                  <DiscoverItem />
-                  <DiscoverItem />
-                  <DiscoverItem /> */} 
+                <div className="action-buttons">
+                  {this.followOrLogin()}
                 </div>
               </div>
             </div>
+            {/* <h1 className="discover-header">Upcoming Shows</h1>
+            <div className="discover-collection">
+            </div> */}
           </div>
+        </div>
+      </div>
     );
   }
 }
