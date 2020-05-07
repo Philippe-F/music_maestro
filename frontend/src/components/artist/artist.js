@@ -150,26 +150,6 @@ class Artist extends React.Component {
     }
   }
 
-  // star() {
-  //   const eventId = this.props.event._id;
-  //   const favIds = this.props.favorites.map((fav) => {
-  //     return fav._id;
-  //   });
-  //   if (this.props.favorites.includes(eventId) || favIds.includes(eventId)) {
-  //     return (
-  //       <div className="img-wrapper">
-  //         <i className="fas fa-star" id="artist-star"></i>
-  //       </div>
-  //     );
-  //   } else {
-  //     return (
-  //       <div className="img-wrapper">
-  //         <i className="far fa-star" id="artist-star"></i>
-  //       </div>
-  //     );
-  //   }
-  // }
-
   render() {
     const name = this.getArtistName();
     const id = this.getArtistId();
@@ -177,21 +157,6 @@ class Artist extends React.Component {
     
     console.log("names", this.props.follows)
     return (
-
-      // <div className="responsive">
-      //   <div className="discover-wrapper">
-      //     <div className="discover">
-      //       {/* <DiscoverItem
-      //         key={event._id}
-      //         event={event}
-      //         openModal={this.props.openModal}
-      //         id={id}
-      //       /> */}
-      //       {this.followOrLogin()}
-      //     </div>
-      //   </div>
-      // </div>
-
       <div className="responsive">
         <div className="discover-wrapper">
           <div className="discover">
