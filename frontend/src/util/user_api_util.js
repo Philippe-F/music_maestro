@@ -10,9 +10,8 @@ export const receiveUserFavorites = userId => {
 
 /////////////////
 export const receiveUserFollows = userId => {
-  return axios.get(`/api/users/${userId}/my_follows`);
+  return axios.get(`/api/users/${userId}/my_artists`);
 };
-// Double check the db for my_follows column 
 ////////////////
 
 export const receiveUserArtists = userId => {
