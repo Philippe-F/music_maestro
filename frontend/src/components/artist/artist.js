@@ -1,4 +1,5 @@
 import React from 'react';
+// import DiscoverItem from "../discover/discover_item";
 
 class Artist extends React.Component {
   constructor(props) {
@@ -80,7 +81,6 @@ class Artist extends React.Component {
 
       return artist._id;
     });
-    console.log("Ids", followIds)
     if (this.props.follows.includes(artistId) || followIds.includes(artistId)) {
       this.props.unfollowArtist(userId, artistId);
       this.flag = true;
@@ -154,8 +154,7 @@ class Artist extends React.Component {
     const name = this.getArtistName();
     const id = this.getArtistId();
     const image= this.getArtistImage();
-    
-    console.log("names", this.props.follows)
+
     return (
       <div className="responsive">
         <div className="discover-wrapper">
@@ -174,13 +173,9 @@ class Artist extends React.Component {
                 </div>
               </div>
             </div>
-            <h1 className="discover-header">Upcoming Shows</h1>
+            {/* <h1 className="discover-header">Upcoming Shows</h1>
             <div className="discover-collection">
-              {/* <DiscoverItem />
-              <DiscoverItem />
-              <DiscoverItem />
-              <DiscoverItem /> */} 
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
